@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 </head>
-<body>
+<body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg")>
 <div class="container">
 <h1>Welcome!</h1>
 	<form action="main-search">
