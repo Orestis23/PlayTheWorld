@@ -47,11 +47,12 @@ public class PTWController {
 				.and("longitude",locations[0].getGeoCode().getLongitude()));
 
 		System.out.println((locations[0].getResponse().getBody()));
-		System.out.println((points[0].getResponse().getBody()));
+		System.out.println("Test " +points[0].getResponse().getBody());
 		System.out.println(Arrays.toString(locations));
 //		mv.addObject("locations", locations[0].getResponse().getBody());
 //		mv.addObject("points", points[0].getResponse().getBody());
 		mv.addObject("locations", locations);
+		//String[] parseTest = 
 		mv.addObject("points", points);
 		return mv;
 

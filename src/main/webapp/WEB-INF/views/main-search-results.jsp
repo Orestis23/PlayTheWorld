@@ -39,29 +39,31 @@
 </table>
 <br>
 <h1>Points of Interest</h1>
+${points }
 <table class="table">
   <tr>
     <th>Name</th>
     <th>Location Type</th>
-    <th>IATA Code</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Travel Score</th>
+    <th>Keywords</th>
   </tr>
-   <c:forEach var="c"  items="${points }">
+   <c:forEach var="c"  items="${points}" varStatus="i">
   <tr>
+<%--  <h1> ${c} </h1> stop --%>
 <%--     <td>${jsonArray.getJSONObject(c).getString("name")}</td>
     <td>${jsonArray.getJSONObject(c).getString("subType")}</td>
     <td>${jsonArray.getJSONObject(c).getString("iataCode")}</td>
     <td>${jsonArray.getJSONObject(c).getString("latitude")}</td>
     <td>${jsonArray.getJSONObject(c).getString("longitude")}</td>
     <td>${jsonArray.getJSONObject(c).getString("score")}</td> --%>
-    <td>${c.name }</td>
-     <td>${c.subType }</td>
-    <td>${c.iataCode }</td>
+     <td>${c.name }</td>
+     <td>${c.category }</td>
      <td>${c.geoCode.latitude }</td>
      <td>${c.geoCode.longitude }</td>
-     <td>${c.analytics.travelers.score }</td>
+     <td><%--  ${c.rank }  --%></td> 
+	 <td><c:forEach var="a"  items="${c.tags }">${a}<br></c:forEach></td>
   </tr>
   </c:forEach>
 </table>
