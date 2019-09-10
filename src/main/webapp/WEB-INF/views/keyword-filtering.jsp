@@ -12,30 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>City Info</h1>
-		<table class="table">
-			<tr>
-				<th>Name</th>
-				<th>Location Type</th>
-				<th>IATA Code</th>
-				<th>Latitude</th>
-				<th>Longitude</th>
-				<th>Travel Score</th>
-			</tr>
-			<c:forEach var="c" items="${locations }">
-				<tr>
-					<td><c:url value="/city-detail" var="url">
-						<c:param name="cityName" value="${c.id}" />
-						</c:url> <a href="${url}">${c.name }</a></td>
-					<td>${c.subType }</td>
-					<td>${c.iataCode }</td>
-					<td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td>
-					<td>${c.analytics.travelers.score }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
+	${keyword }
 		<h1>Points of Interest</h1>
 		<table class="table">
 			<tr>
@@ -47,13 +24,15 @@
 				<th>Keywords</th>
 			</tr>
 			<c:forEach var="c" items="${points}" varStatus="i">
-				<tr>
-					<td>${c.name }</td>
-					<td>${c.category }</td>
-					<td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td>
-					<td>${c.rank }</td>
-					<td><c:forEach var="a" items="${c.tags }">
+				<c:forEach var="b" items="${c.tags }">
+					<c:if test="${b eq keyword}">
+						<tr>
+							<td>${c.name }</td>
+							<td>${c.category }</td>
+							<td>${c.geoCode.latitude }</td>
+							<td>${c.geoCode.longitude }</td>
+							<td>${c.rank }</td>
+							<td><c:forEach var="a" items="${c.tags }">
 							<c:url value="/keyword-filter" var="url">
 								<c:param name="keyword" value="${a}" />
 								<c:param name="latitude" value="${c.geoCode.latitude}" />
@@ -62,7 +41,9 @@
 							<a href="${url}">${a }</a>
 							<br>
 						</c:forEach></td>
-				</tr>
+						</tr>
+					</c:if>
+				</c:forEach>
 			</c:forEach>
 		</table>
 		<div>

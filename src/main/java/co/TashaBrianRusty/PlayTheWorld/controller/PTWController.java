@@ -2,6 +2,7 @@ package co.TashaBrianRusty.PlayTheWorld.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,7 +36,7 @@ public class PTWController {
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
 
 		Location[] locations = amadeus.referenceData.locations
-				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.ANY));
+				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.CITY));
 
 		
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
@@ -48,6 +49,38 @@ public class PTWController {
 		mv.addObject("locations", locations);
 		mv.addObject("points", points);
 		return mv;
-
+	}
+	
+	
+	@RequestMapping("city-detail")
+	public ModelAndView cityDetail(@RequestParam("cityName")String city) throws ResponseException {
+		ModelAndView mv = new ModelAndView("city-info");
+		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
+//		Location[] location = amadeus.referenceData.locations.get(Params
+//				  .with("cityName", city));
+		Location location = amadeus.referenceData.location(city).get();
+		mv.addObject("location", location);
+		return mv;
+	}
+	
+	@RequestMapping("keyword-filter")
+	public ModelAndView filterKeyword(@RequestParam("keyword")String tag, 
+			@RequestParam("latitude")double latitude, @RequestParam("longitude")double longitude) throws ResponseException {
+		ModelAndView mv = new ModelAndView("keyword-filtering");
+		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
+		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
+				.get(Params.with("latitude", latitude)
+				.and("longitude", longitude));
+		String keyword = tag;
+		mv.addObject("keyword", keyword);
+		mv.addObject("points", points);
+		return mv;
+	}
+	
+	@RequestMapping("points-next")
+	public ModelAndView pointsFirst(@RequestAttribute("next")String link) throws ResponseException {
+		ModelAndView mv = new ModelAndView("main-search-results");
+		
+		return mv;
 	}
 }
