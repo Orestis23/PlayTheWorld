@@ -51,18 +51,11 @@ ${points }
   </tr>
    <c:forEach var="c"  items="${points}" varStatus="i">
   <tr>
-<%--  <h1> ${c} </h1> stop --%>
-<%--     <td>${jsonArray.getJSONObject(c).getString("name")}</td>
-    <td>${jsonArray.getJSONObject(c).getString("subType")}</td>
-    <td>${jsonArray.getJSONObject(c).getString("iataCode")}</td>
-    <td>${jsonArray.getJSONObject(c).getString("latitude")}</td>
-    <td>${jsonArray.getJSONObject(c).getString("longitude")}</td>
-    <td>${jsonArray.getJSONObject(c).getString("score")}</td> --%>
      <td>${c.name }</td>
      <td>${c.category }</td>
      <td>${c.geoCode.latitude }</td>
      <td>${c.geoCode.longitude }</td>
-     <td><%--  ${c.rank }  --%></td> 
+     <td>${c.rank }</td> 
 	 <td><c:forEach var="a"  items="${c.tags }">${a}<br></c:forEach></td>
   </tr>
   </c:forEach>
