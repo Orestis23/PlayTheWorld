@@ -114,8 +114,8 @@
 									<overWrite>true</overWrite>
 									<outputDirectory>${project.build.directory}/classes</outputDirectory>
 									<excludes>
-										<exclude>**/PointOfInterest.class</exclude>
-										<exclude>**/Location.class</exclude>
+										**/PointOfInterest.class,
+										**/Location.class
 									</excludes>
 								</artifactItem>
 							</artifactItems>
