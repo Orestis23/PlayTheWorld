@@ -25,8 +25,10 @@
   { cloudName: "${name}", uploadPreset: "${preset}" }, (error, result) => {
 	 console.log("start")
 	
-	 console.log(result.info.url);
-	 
+	 if(result.event === 'success'){
+         console.log(result.info.url);
+         window.location.assign("uploadurl?imageURL=" + result.info.url);
+     }
 	  });
 	
 function upload(){

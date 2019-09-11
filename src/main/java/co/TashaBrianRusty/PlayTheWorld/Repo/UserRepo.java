@@ -8,6 +8,6 @@ public interface UserRepo extends JpaRepository<User, Long>{
 
 	User findByeMail(String eMail);
 
-	User findByeMail(String eMail);
+	
 
 }
