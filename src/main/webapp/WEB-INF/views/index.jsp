@@ -13,7 +13,18 @@
 <div class="container">
 <h1>Welcome ${userInfo.userName }!</h1>
 	<form action="main-search">
-		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> 
+<!-- 		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> -->
+		<select name="msearch">
+		<option value="London">London</option>
+		<option value="New York">New York</option>
+		<option value="Barcelona">Barcelona</option>
+		<option value="Bangalore">Bangalore</option>
+		<option value="Berlin">Berlin</option>
+		<option value="Dallas">Dallas</option>
+		<option value="Paris">Paris</option>
+		<option value="San Francisco">San Francisco</option>
+		</select>
+		
 		<input class="btn btn-primary" type="submit" value="Search">
 	</form>
 	

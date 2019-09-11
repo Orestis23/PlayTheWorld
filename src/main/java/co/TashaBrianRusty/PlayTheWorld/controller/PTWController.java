@@ -12,6 +12,7 @@ import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.referenceData.Locations;
 import com.amadeus.resources.Location;
+import com.amadeus.resources.Location.Address;
 import com.amadeus.resources.PointOfInterest;
 
 @Controller
@@ -42,6 +43,7 @@ public class PTWController {
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
 				.get(Params.with("latitude", locations[0].getGeoCode().getLatitude())
 				.and("longitude",locations[0].getGeoCode().getLongitude()));
+	
 
 //		System.out.println((locations[0].getResponse().getBody()));
 //		System.out.println("Test " +points[0].getResponse().getBody());
@@ -59,7 +61,8 @@ public class PTWController {
 //		Location[] location = amadeus.referenceData.locations.get(Params
 //				  .with("cityName", city));
 		Location location = amadeus.referenceData.location(city).get();
-		mv.addObject("location", location);
+		Address address = location.getAddress();
+		mv.addObject("location", address);
 		return mv;
 	}
 	
