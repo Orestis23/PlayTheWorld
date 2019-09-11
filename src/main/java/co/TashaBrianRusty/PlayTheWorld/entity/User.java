@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "User")
 public class User {
@@ -20,6 +22,8 @@ public class User {
 	private int locVisPts;
 	private String favCountries;
 	private String favActivities;
+	@JsonProperty("image_url")
+	private String imageUrl;
 	
 	public User() {
 		super();
@@ -89,13 +93,24 @@ public class User {
 	public void setFavActivities(String favActivities) {
 		this.favActivities = favActivities;
 	}
+	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", homeBase=" + homeBase + ", currentPoints="
 				+ currentPoints + ", locVisited=" + locVisited + ", locVisPts=" + locVisPts + ", favCountries="
-				+ favCountries + ", favActivities=" + favActivities + "]";
+				+ favCountries + ", favActivities=" + favActivities + ", imageUrl=" + imageUrl + "]";
 	}
+
+
 
 
 }

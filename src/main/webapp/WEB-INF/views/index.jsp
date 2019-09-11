@@ -11,11 +11,27 @@
 </head>
 <body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg")>
 <div class="container">
-<h1>Welcome!</h1>
+<h1>Welcome ${user.userName }!</h1>
 	<form action="main-search">
 		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> 
 		<input class="btn btn-primary" type="submit" value="Search">
 	</form>
+	
+	<body background=“https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg”)>
+<div class=“container”>
+
+</div>
+<div>
+    <h3>Your Information</h3>
+   <p>Tasha Langston</p>
+   <p>tasha@Gmail.com</p>
+   <p>900 Points Accumulated</p>
+   <h3>Locations Visited</h3>
+   <p>China</p>
+   <h3>Favorites</h3>
+   <p>Timbuktu</p>
+</div>
+</body>
 </div>
 </body>
 </html>

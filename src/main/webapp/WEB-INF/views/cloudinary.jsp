@@ -24,7 +24,9 @@
   var myWidget = cloudinary.applyUploadWidget(document.getElementById('opener'), 
   { cloudName: "${name}", uploadPreset: "${preset}" }, (error, result) => {
 	 console.log("start")
-	  console.log(result);
+	
+	 console.log(result.info.url);
+	 
 	  });
 	
 function upload(){

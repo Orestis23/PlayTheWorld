@@ -16,8 +16,6 @@ public class CloudinaryController {
 	String preset;
 	
 	
-	
-	
 	@RequestMapping ("cloud")
 	public ModelAndView imageUpload() {
 		ModelAndView mv = new ModelAndView ("cloudinary");
