@@ -23,12 +23,12 @@ public class PTWController {
 	@Value("${amadeus.secret}")
 	String amadeusSecret;
 
-	@RequestMapping("/")
-	public ModelAndView home() throws ResponseException {
-		ModelAndView mv = new ModelAndView("index");
-
-		return mv;
-	}
+//	@RequestMapping("/")
+//	public ModelAndView home() throws ResponseException {
+//		ModelAndView mv = new ModelAndView("index");
+//
+//		return mv;
+//	}
 
 	@RequestMapping("main-search")
 	public ModelAndView mainSearch(@RequestParam("msearch") String msearch) throws ResponseException {

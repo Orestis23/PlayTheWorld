@@ -16,9 +16,19 @@ public class UserController {
 	@Autowired
 	UserRepo userRepo;
 
-	@RequestMapping("/user")
+	@RequestMapping("/")
 	public ModelAndView home() {
-		List<User> users = userRepo.findAll();
-		return new ModelAndView("index", "list", users);
+//		List<User> users = userRepo.findAll();
+		return new ModelAndView("login");
 	}
+
+	@RequestMapping("/login")
+	public ModelAndView submitLogin(String eMail) {
+		User user = userRepo.findByeMail(eMail);
+		System.out.println(user);
+		return new ModelAndView("index", "userInfo", user);
+	}
+	
+
+
 }
