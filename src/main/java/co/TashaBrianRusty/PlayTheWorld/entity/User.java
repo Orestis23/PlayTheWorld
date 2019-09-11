@@ -1,12 +1,13 @@
 package co.TashaBrianRusty.PlayTheWorld.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "User")
@@ -22,12 +23,23 @@ public class User {
 	private String locVisited;
 	private String favCities;
 	private String favActivities;
-	@JsonProperty("image_url")
-	private String imageUrl;
+//	@JsonProperty("image_url")
+//	private String imageUrl;
+	
+	@OneToMany(mappedBy="user")
+	private List<UserImage> imageList;
 	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<UserImage> getImageList() {
+		return imageList;
+	}
+
+	public void setImageList(List<UserImage> imageList) {
+		this.imageList = imageList;
 	}
 
 	public Long getId() {
@@ -94,19 +106,19 @@ public class User {
 		this.favActivities = favActivities;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+//	public String getImageUrl() {
+//		return imageUrl;
+//	}
+//
+//	public void setImageUrl(String imageUrl) {
+//		this.imageUrl = imageUrl;
+//	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
 				+ ", currentPoints=" + currentPoints + ", locVisited=" + locVisited + ", favCities=" + favCities
-				+ ", favActivities=" + favActivities + ", imageUrl=" + imageUrl + "]";
+				+ ", favActivities=" + favActivities;
 	}
 
 	

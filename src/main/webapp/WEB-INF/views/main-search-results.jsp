@@ -16,10 +16,10 @@
 		<table class="table">
 			<tr>
 				<th>Name</th>
-				<th>Location Type</th>
-				<th>IATA Code</th>
-				<th>Latitude</th>
-				<th>Longitude</th>
+				<!-- <th>Location Type</th> -->
+				<th>City Code</th>
+				<!-- <th>Latitude</th>
+				<th>Longitude</th> -->
 				<th>Travel Score</th>
 			</tr>
 			<c:forEach var="c" items="${locations }">
@@ -27,10 +27,10 @@
 					<td><c:url value="/city-detail" var="url">
 						<c:param name="cityName" value="${c.id}" />
 						</c:url> <a href="${url}">${c.name }</a></td>
-					<td>${c.subType }</td>
+					<%-- <td>${c.subType }</td> --%>
 					<td>${c.iataCode }</td>
-					<td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td>
+					<%-- <td>${c.geoCode.latitude }</td>
+					<td>${c.geoCode.longitude }</td> --%>
 					<td>${c.analytics.travelers.score }</td>
 				</tr>
 			</c:forEach>
@@ -41,8 +41,8 @@
 			<tr>
 				<th>Name</th>
 				<th>Location Type</th>
-				<th>Latitude</th>
-				<th>Longitude</th>
+				<!-- <th>Latitude</th>
+				<th>Longitude</th> -->
 				<th>Travel Score</th>
 				<th>Keywords</th>
 			</tr>
@@ -50,8 +50,8 @@
 				<tr>
 					<td>${c.name }</td>
 					<td>${c.category }</td>
-					<td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td>
+					<%-- <td>${c.geoCode.latitude }</td>
+					<td>${c.geoCode.longitude }</td> --%>
 					<td>${c.rank }</td>
 					<td><c:forEach var="a" items="${c.tags }">
 							<c:url value="/keyword-filter" var="url">
