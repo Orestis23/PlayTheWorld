@@ -16,11 +16,11 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String userName;
+	private String eMail;
 	private String homeBase;
 	private String currentPoints;
 	private String locVisited;
-	private int locVisPts;
-	private String favCountries;
+	private String favCities;
 	private String favActivities;
 	@JsonProperty("image_url")
 	private String imageUrl;
@@ -44,6 +44,14 @@ public class User {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
 	}
 
 	public String getHomeBase() {
@@ -70,20 +78,12 @@ public class User {
 		this.locVisited = locVisited;
 	}
 
-	public int getLocVisPts() {
-		return locVisPts;
+	public String getFavCities() {
+		return favCities;
 	}
 
-	public void setLocVisPts(int locVisPts) {
-		this.locVisPts = locVisPts;
-	}
-
-	public String getFavCountries() {
-		return favCountries;
-	}
-
-	public void setFavCountries(String favCountries) {
-		this.favCountries = favCountries;
+	public void setFavCities(String favCities) {
+		this.favCities = favCities;
 	}
 
 	public String getFavActivities() {
@@ -93,7 +93,6 @@ public class User {
 	public void setFavActivities(String favActivities) {
 		this.favActivities = favActivities;
 	}
-	
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -105,12 +104,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", homeBase=" + homeBase + ", currentPoints="
-				+ currentPoints + ", locVisited=" + locVisited + ", locVisPts=" + locVisPts + ", favCountries="
-				+ favCountries + ", favActivities=" + favActivities + ", imageUrl=" + imageUrl + "]";
+		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
+				+ ", currentPoints=" + currentPoints + ", locVisited=" + locVisited + ", favCities=" + favCities
+				+ ", favActivities=" + favActivities + ", imageUrl=" + imageUrl + "]";
 	}
 
-
-
-
+	
 }
