@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,9 +19,15 @@ public class UserController {
 
 	@Autowired
 	UserRepo userRepo;
-	
+
 	@Autowired
 	HttpSession session;
+	
+	@Value("${cloud.name}")
+	String cloudName;
+
+	@Value("${upload.preset}")
+	String preset;
 
 	@RequestMapping("/")
 	public ModelAndView home() {
@@ -32,19 +39,16 @@ public class UserController {
 	public ModelAndView submitLogin(String eMail) {
 		User user = userRepo.findByeMail(eMail);
 		session.setAttribute("user", user);
-		
+
 		List<UserImage> images = user.getImageList();
-		
+
 		System.out.println(user);
 		ModelAndView mv = new ModelAndView("index", "userInfo", user);
 		mv.addObject("imageList", images);
-		
-		
-		
-		
+		mv.addObject("name", cloudName);
+		mv.addObject("preset", preset);
+
 		return mv;
 	}
-	
-
 
 }

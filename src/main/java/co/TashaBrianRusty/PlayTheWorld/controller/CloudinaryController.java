@@ -54,7 +54,7 @@ public class CloudinaryController {
 		System.out.println(url);
 		
 		
-		return null;
+		return new ModelAndView("redirect:/login?eMail=" + u.geteMail());
 	}
 
 }
