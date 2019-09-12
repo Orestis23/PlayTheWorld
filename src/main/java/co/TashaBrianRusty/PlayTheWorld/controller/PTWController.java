@@ -1,5 +1,6 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -14,6 +15,10 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.referenceData.Locations;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.Location.Address;
+
+import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
+import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
+
 import com.amadeus.resources.PointOfInterest;
 
 @Controller
@@ -31,6 +36,9 @@ public class PTWController {
 	@Value("${google.secret}")
 	String googleSecret;
 
+	@Autowired
+	UserRepo userRepo;
+	
 //	@RequestMapping("/")
 //	public ModelAndView home() throws ResponseException {
 //		ModelAndView mv = new ModelAndView("index");
@@ -42,7 +50,7 @@ public class PTWController {
 	public ModelAndView mainSearch(@RequestParam("msearch") String msearch) throws ResponseException {
 		ModelAndView mv = new ModelAndView("main-search-results");
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
-
+		
 		Location[] locations = amadeus.referenceData.locations
 				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.CITY));
 		double latitude = 0;
@@ -79,6 +87,15 @@ public class PTWController {
 			break;
 		}
 
+		
+		double lat1 = 42.3356398;
+		double lon1 = -83.0502464;
+		double lat2 = latitude;
+		double lon2 = longitude;
+		Distance distance = new Distance(lat1, lon1, lat2, lon2);
+		int output = (int) distance.getOutput();
+
+		
 		System.out.println(latitude);
 		System.out.println(longitude);
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
@@ -88,6 +105,7 @@ public class PTWController {
 				+ "&zoom=12&size=555x300&scale=2&key=" + googleKey;
 
 		System.out.println(staticMap);
+		mv.addObject("distance", output);
 		mv.addObject("googleKey", googleKey);
 		mv.addObject("locations", locations);
 		mv.addObject("points", points);
