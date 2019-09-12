@@ -35,7 +35,7 @@ public class PTWController {
 	public ModelAndView mainSearch(@RequestParam("msearch") String msearch) throws ResponseException {
 		ModelAndView mv = new ModelAndView("main-search-results");
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
-
+System.out.println("test:" + msearch);
 		Location[] locations = amadeus.referenceData.locations
 				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.CITY));
 		double latitude = 0;
@@ -82,6 +82,7 @@ public class PTWController {
 //		System.out.println(Arrays.toString(locations));
 		mv.addObject("locations", locations);
 		mv.addObject("points", points);
+		mv.addObject("msearch", msearch);
 		return mv;
 	}
 
