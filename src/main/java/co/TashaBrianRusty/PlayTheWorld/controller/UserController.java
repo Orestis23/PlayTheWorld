@@ -10,13 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
+import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 import co.TashaBrianRusty.PlayTheWorld.entity.UserImage;
 
 @Controller
 public class UserController {
 
+	@Autowired
+	FavoritesRepo favRepo;
+	
 	@Autowired
 	UserRepo userRepo;
 
@@ -39,15 +44,15 @@ public class UserController {
 	public ModelAndView submitLogin(String eMail) {
 		User user = userRepo.findByeMail(eMail);
 		session.setAttribute("user", user);
-
+		List<Favorites> favoriteAtt = favRepo.findAll();
 		List<UserImage> images = user.getImageList();
-
+		
 		System.out.println(user);
 		ModelAndView mv = new ModelAndView("index", "userInfo", user);
 		mv.addObject("imageList", images);
 		mv.addObject("name", cloudName);
 		mv.addObject("preset", preset);
-
+		mv.addObject("list", favoriteAtt);
 		return mv;
 	}
 
