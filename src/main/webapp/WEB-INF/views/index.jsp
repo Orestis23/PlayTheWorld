@@ -35,7 +35,7 @@
 			<%--     <p></p> <!-- Why doesn't this work? --> --%>
 			<p>${userInfo.userName }</p>
 			<p>${userInfo.eMail }</p>
-			<p>${userInfo.currentPoints }PointsAccumulated</p>
+			<p>${userInfo.currentPoints } PointsAccumulated</p>
 			<p>Your Home Location ${userInfo.homeBase }</p>
 			<h3>Locations Visited</h3>
 			<p>${userInfo.locVisited }</p>
