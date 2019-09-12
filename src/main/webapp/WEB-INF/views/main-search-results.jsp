@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <link
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css"
 	rel="stylesheet">
 <head>
 <meta charset="ISO-8859-1">

@@ -5,8 +5,9 @@
 
 <!DOCTYPE html>
 <html>
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-G3Fme2BM4boCE9tHx9zHvcxaQoAkksPQa/8oyn1Dzqv7gdcXChereUsXGx6LtbqA" crossorigin="anonymous">
-
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css"
+	rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -36,8 +37,8 @@
 			<%--     <p></p> <!-- Why doesn't this work? --> --%>
 			<p>${userInfo.userName }</p>
 			<p>${userInfo.eMail }</p>
-			<p>${userInfo.currentPoints } PointsAccumulated</p>
-			<p>Your Home Location ${userInfo.homeBase }</p>
+			<p>Points Accumulated: ${userInfo.currentPoints }</p>
+			<p>Your Home Location: ${userInfo.homeBase }</p>
 			<h3>Locations Visited</h3>
 			<p>${userInfo.locVisited }</p>
 			<!-- Add a loop around this for mult. locations -->
