@@ -34,9 +34,5 @@ public class AttractionController {
 		return new ModelAndView("activity-type", "list", attractions);
 	}
 	
-	@RequestMapping("/delFavAtt")
-	public ModelAndView delFavAtt(@RequestParam("idDelete") int id) {
-		attRepo.deleteById(id);
-		return new ModelAndView("redirect:/");
-	}
+	
 }

@@ -52,8 +52,8 @@
 		<c:forEach var="att" items="${list }" varStatus="i">
 		<tr>
 			
+			<td><button type="button" a href="delFavAtt?idDelete=${att.id }">Remove</a></button></td>
 			<td>${att.activityName }<br></td>
-			<%-- <td><a href="delete-jellybean?idDelete=${jb.id }">Delete</a></td> --%>
 		
 		</tr>
 		</c:forEach>
