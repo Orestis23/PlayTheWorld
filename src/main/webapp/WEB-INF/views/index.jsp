@@ -49,7 +49,14 @@
 			<!-- Add a loop around this for mult. locations -->
 
 		</div>
+		<c:forEach var="att" items="${list }" varStatus="i">
+		<tr>
+			
+			<td>${att.activityName }<br></td>
+			<%-- <td><a href="delete-jellybean?idDelete=${jb.id }">Delete</a></td> --%>
 		
+		</tr>
+		</c:forEach>
 		<div>
 		<c:forEach var="img" items="${imageList }">
 		<img src="${img.url}">
