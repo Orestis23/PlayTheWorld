@@ -13,6 +13,7 @@
 <body>
 	<div class="container">
 		<br> <img src="${map }">
+		<br><br>
 		<h1>City Info</h1>
 		<table class="table">
 			<tr>
