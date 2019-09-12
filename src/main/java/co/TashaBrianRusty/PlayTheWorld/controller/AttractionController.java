@@ -33,17 +33,6 @@ public class AttractionController {
 		List<Attraction> attractions = attRepo.findAll();
 		return new ModelAndView("activity-type", "list", attractions);
 	}
-
-	@RequestMapping("/addFavAtt")
-	public ModelAndView addFavAtt(String attName, String msearch) {
-//		attRepo.save(attDetails);
-		System.out.println("Add to Favorites" + attName);
-		User user = (User) session.getAttribute("user");
-		Favorites favorite = new Favorites(user.getUserName(), attName);
-		favRepo.save(favorite);
-		System.out.println(user);
-		return new ModelAndView("forward:/main-search?msearch=" + msearch);
-	}
 	
 	@RequestMapping("/delFavAtt")
 	public ModelAndView delFavAtt(@RequestParam("idDelete") int id) {
