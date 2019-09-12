@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Favorites")
+@Table(name = "favorites")
 public class Favorites {
 	
 	@Id
