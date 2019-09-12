@@ -39,7 +39,7 @@
 		<h1>Points of Interest</h1>
 		<table class="table">
 			<tr>
-				<th>Name</th>
+				<th>Name (Select to Mark as Favorite)</th>
 				<th>Location Type</th>
 				<!-- <th>Latitude</th>
 				<th>Longitude</th> -->
@@ -48,7 +48,8 @@
 			</tr>
 			<c:forEach var="c" items="${points}" varStatus="i">
 				<tr>
-					<td>${c.name }</td>
+					
+					<td><input onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }'" type="checkbox" id="favorites" name="favorite">${c.name }</td>
 					<td>${c.category }</td>
 					<%-- <td>${c.geoCode.latitude }</td>
 					<td>${c.geoCode.longitude }</td> --%>
