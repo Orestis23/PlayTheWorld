@@ -12,6 +12,7 @@
 </head>
 <body>
 	<div class="container">
+		<br> <img src="${map }">
 		<h1>City Info</h1>
 		<table class="table">
 			<tr>
@@ -25,7 +26,7 @@
 			<c:forEach var="c" items="${locations }">
 				<tr>
 					<td><c:url value="/city-detail" var="url">
-						<c:param name="cityName" value="${c.id}" />
+							<c:param name="cityName" value="${c.id}" />
 						</c:url> <a href="${url}">${c.name }</a></td>
 					<%-- <td>${c.subType }</td> --%>
 					<td>${c.iataCode }</td>
@@ -39,6 +40,7 @@
 		<h1>Points of Interest</h1>
 		<table class="table">
 			<tr>
+				<th></th>
 				<th>Name (Select to Mark as Favorite)</th>
 				<th>Location Type</th>
 				<!-- <th>Latitude</th>
@@ -48,8 +50,11 @@
 			</tr>
 			<c:forEach var="c" items="${points}" varStatus="i">
 				<tr>
-					
-					<td><input onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }'" type="checkbox" id="favorites" name="favorite">${c.name }</td>
+					<td><img src="https://maps.googleapis.com/maps/api/staticmap?center=${c.geoCode.latitude},${c.geoCode.longitude}
+				&zoom=13&markers=size:tiny|${c.geoCode.latitude},${c.geoCode.longitude}&size=100x100&scale=2&key=${ googleKey}"></td>
+					<td><input
+						onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }'"
+						type="checkbox" id="favorites" name="favorite">${c.name }</td>
 					<td>${c.category }</td>
 					<%-- <td>${c.geoCode.latitude }</td>
 					<td>${c.geoCode.longitude }</td> --%>

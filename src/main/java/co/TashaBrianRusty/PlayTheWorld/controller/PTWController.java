@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amadeus.Amadeus;
@@ -24,6 +25,12 @@ public class PTWController {
 	@Value("${amadeus.secret}")
 	String amadeusSecret;
 
+	@Value("${google.key}")
+	String googleKey;
+
+	@Value("${google.secret}")
+	String googleSecret;
+
 //	@RequestMapping("/")
 //	public ModelAndView home() throws ResponseException {
 //		ModelAndView mv = new ModelAndView("index");
@@ -35,7 +42,7 @@ public class PTWController {
 	public ModelAndView mainSearch(@RequestParam("msearch") String msearch) throws ResponseException {
 		ModelAndView mv = new ModelAndView("main-search-results");
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
-System.out.println("test:" + msearch);
+
 		Location[] locations = amadeus.referenceData.locations
 				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.CITY));
 		double latitude = 0;
@@ -77,12 +84,15 @@ System.out.println("test:" + msearch);
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
 				.get(Params.with("latitude", latitude).and("longitude", longitude));
 
-//		System.out.println((locations[0].getResponse().getBody()));
-//		System.out.println("Test " +points[0].getResponse().getBody());
-//		System.out.println(Arrays.toString(locations));
+		String staticMap = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude
+				+ "&zoom=12&size=555x300&scale=2&key=" + googleKey;
+
+		System.out.println(staticMap);
+		mv.addObject("googleKey", googleKey);
 		mv.addObject("locations", locations);
 		mv.addObject("points", points);
 		mv.addObject("msearch", msearch);
+		mv.addObject("map", staticMap);
 		return mv;
 	}
 
