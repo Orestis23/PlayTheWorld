@@ -47,22 +47,25 @@
 			<!-- Add a loop around this for mult. locations -->
 			<h3>Favorite Activities</h3>
 			<p>${userInfo.favActivities }</p>
-			<!-- Add a loop around this for mult. locations -->
+			
 
 		</div>
 		<c:forEach var="att" items="${list }" varStatus="i">
 		<tr>
 			
-			<td><button type="button" a href="delFavAtt?idDelete=${att.id }">Remove</a></button></td>
+		<!-- 	Enter city name here for this table too? -->
+			<td><a href="delFavAtt?idDelete=${att.id }">Remove</a></td>
 			<td>${att.activityName }<br></td>
 		
 		</tr>
 		</c:forEach>
+		</table>
 		<div>
 		<c:forEach var="img" items="${imageList }">
 		<img src="${img.url}">
 		
 		</c:forEach>
+
 		
 		</div>
 	<button onclick="showUploadWidget()" id="opener" class="cloudinary-button">Upload Image</button>
