@@ -9,10 +9,12 @@ public class Distance {
 
 	GeodeticCalculator geoCalc = new GeodeticCalculator();
 	Ellipsoid reference = Ellipsoid.WGS84;
-	GlobalCoordinates origin = new GlobalCoordinates(42.3356398, -83.0502464);
-	GlobalCoordinates destination = new GlobalCoordinates(42.3667297, -71.0150276);
-	GeodeticCurve geoCurve = geoCalc.calculateGeodeticCurve(reference, origin, destination);
-	double output = geoCurve.getEllipsoidalDistance() / 1000.0;
+//	GlobalCoordinates origin = new GlobalCoordinates(42.3356398, -83.0502464);
+//	GlobalCoordinates destination = new GlobalCoordinates(42.3667297, -71.0150276);
+	GlobalCoordinates origin;
+	GlobalCoordinates destination;
+	GeodeticCurve geoCurve;
+	double output;
 	
 	public Distance() {
 		super();
@@ -32,6 +34,10 @@ public class Distance {
 	public Distance(double lat1, double lon1, double lat2, double lon2) {
 		this.origin = new GlobalCoordinates(lat1, lon1);
 		this.destination = new GlobalCoordinates(lat2, lon2);
+		GeodeticCurve geoCurve = geoCalc.calculateGeodeticCurve(reference, origin, destination);
+		double output = geoCurve.getEllipsoidalDistance() / 1000.0;
+		this.setOutput(output);
+		return;
 	}
 
 	public double getOutput() {

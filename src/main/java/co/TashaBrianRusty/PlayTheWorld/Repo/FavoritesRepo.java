@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
+import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 public interface FavoritesRepo extends JpaRepository<Favorites, Long>{
 

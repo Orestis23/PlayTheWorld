@@ -4,15 +4,12 @@
 <%@taglib uri="http://cloudinary.com/jsp/taglib" prefix="cl"%>
 <!DOCTYPE html>
 <html>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css"
+	rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>Add Image</title>
-<link
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM"
-	crossorigin="anonymous">
-
 <script src="https://widget.cloudinary.com/v2.0/global/all.js"
 	type="text/javascript">  </script>
 

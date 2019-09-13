@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <link
-	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css"
 	rel="stylesheet">
 <head>
 <meta charset="ISO-8859-1">
@@ -23,6 +23,7 @@
 				<!-- <th>Latitude</th>
 				<th>Longitude</th> -->
 				<th>Travel Score</th>
+				<th>Points for Visiting</th>
 			</tr>
 			<c:forEach var="c" items="${locations }">
 				<tr>
@@ -34,6 +35,7 @@
 					<%-- <td>${c.geoCode.latitude }</td>
 					<td>${c.geoCode.longitude }</td> --%>
 					<td>${c.analytics.travelers.score }</td>
+					<td>${distance }</td>
 				</tr>
 			</c:forEach>
 		</table>

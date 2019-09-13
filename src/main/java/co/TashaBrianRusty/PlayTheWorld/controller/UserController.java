@@ -42,13 +42,13 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public ModelAndView submitLogin(String eMail) {
+		ModelAndView mv = new ModelAndView("index");
 		User user = userRepo.findByeMail(eMail);
 		session.setAttribute("user", user);
 		List<Favorites> favoriteAtt = favRepo.findByUserName(user.getUserName());
 		List<UserImage> images = user.getImageList();
 		
-		System.out.println(user);
-		ModelAndView mv = new ModelAndView("index", "userInfo", user);
+		mv.addObject("userInfo", user);
 		mv.addObject("imageList", images);
 		mv.addObject("name", cloudName);
 		mv.addObject("preset", preset);

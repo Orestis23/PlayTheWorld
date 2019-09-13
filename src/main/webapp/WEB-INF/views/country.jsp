@@ -3,11 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css"
+	rel="stylesheet">
 <head>
 <meta charset="UTF-8">
 <title>Country View</title>
 
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/minty/bootstrap.min.css" rel="stylesheet" integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM" crossorigin="anonymous"></head>
+</head>
 <body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg")>
 
 <h1>Country Name  <!-- Replace with EL tag --></h1>
