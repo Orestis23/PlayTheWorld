@@ -7,12 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Attraction")
+@Table(name = "favorites")
 public class Attraction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String name;
 	private String category;
 	private String tags;
@@ -22,11 +22,11 @@ public class Attraction {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

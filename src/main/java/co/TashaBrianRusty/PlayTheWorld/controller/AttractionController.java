@@ -30,7 +30,7 @@ public class AttractionController {
 	
 	@RequestMapping("/activity-type")
 	public ModelAndView home() {
-		List<Attraction> attractions = attRepo.findAll();
+		List<Favorites> attractions = attRepo.findAll();
 		return new ModelAndView("activity-type", "list", attractions);
 	}
 	

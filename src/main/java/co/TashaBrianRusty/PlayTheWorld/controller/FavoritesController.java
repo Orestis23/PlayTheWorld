@@ -25,6 +25,8 @@ public class FavoritesController {
 	@Autowired
 	HttpSession session;
 	
+	
+	
 	@RequestMapping("/addFavAtt")
 	public ModelAndView addFavAtt(String attName, String msearch) {
 //		attRepo.save(attDetails);
@@ -43,6 +45,8 @@ public class FavoritesController {
 	@RequestMapping("/delFavAtt")
 	public ModelAndView delFavAtt(@RequestParam("idDelete") int id) {
 		attRepo.deleteById(id);
-		return new ModelAndView("redirect:/");
+		User user = (User) session.getAttribute("user");
+		
+		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
 	}
 }

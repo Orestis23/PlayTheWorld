@@ -44,7 +44,7 @@ public class UserController {
 	public ModelAndView submitLogin(String eMail) {
 		User user = userRepo.findByeMail(eMail);
 		session.setAttribute("user", user);
-		List<Favorites> favoriteAtt = favRepo.findAll();
+		List<Favorites> favoriteAtt = favRepo.findByUserName(user.getUserName());
 		List<UserImage> images = user.getImageList();
 		
 		System.out.println(user);
