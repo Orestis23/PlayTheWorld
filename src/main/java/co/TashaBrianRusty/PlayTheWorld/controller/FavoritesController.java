@@ -1,5 +1,8 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +32,11 @@ public class FavoritesController {
 	
 	@RequestMapping("/addFavAtt")
 	public ModelAndView addFavAtt(String attName, String msearch) {
-//		attRepo.save(attDetails);
-		System.out.println("Add to Favorites" + attName);
+
 		User user = (User) session.getAttribute("user");
 		Favorites favorite = new Favorites(user.getUserName(), attName);
 		favRepo.save(favorite);
-		System.out.println(user);
-		System.out.println(msearch);
-		// ModelAndView mv = new ModelAndView("forward:/main-search?msearch=" + msearch);
+
 		ModelAndView mv = new ModelAndView("forward:/main-search");
 
 		return mv;

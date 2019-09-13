@@ -23,12 +23,14 @@ public class User {
 	private String locVisited;
 	private String favCities;
 	private String favActivities;
+	private String profileImage;
+	private String password;
 //	@JsonProperty("image_url")
 //	private String imageUrl;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	private List<UserImage> imageList;
-	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,6 +42,22 @@ public class User {
 
 	public void setImageList(List<UserImage> imageList) {
 		this.imageList = imageList;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 
 	public Long getId() {
@@ -106,20 +124,12 @@ public class User {
 		this.favActivities = favActivities;
 	}
 
-//	public String getImageUrl() {
-//		return imageUrl;
-//	}
-//
-//	public void setImageUrl(String imageUrl) {
-//		this.imageUrl = imageUrl;
-//	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
 				+ ", currentPoints=" + currentPoints + ", locVisited=" + locVisited + ", favCities=" + favCities
-				+ ", favActivities=" + favActivities;
+				+ ", favActivities=" + favActivities + ", profileImage=" + profileImage + ", password=" + password
+				+ ", imageList=" + imageList + "]";
 	}
 
-	
 }

@@ -53,7 +53,10 @@ public class UserController {
 		mv.addObject("name", cloudName);
 		mv.addObject("preset", preset);
 		mv.addObject("list", favoriteAtt);
+		
+		
 		return mv;
 	}
+	
 
 }

@@ -1,12 +1,16 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amadeus.Amadeus;
@@ -15,11 +19,13 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.referenceData.Locations;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.Location.Address;
+import com.amadeus.resources.PointOfInterest;
 
+import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
-
-import com.amadeus.resources.PointOfInterest;
+import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
+import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 @Controller
 public class PTWController {
@@ -38,6 +44,12 @@ public class PTWController {
 
 	@Autowired
 	UserRepo userRepo;
+	
+	@Autowired
+	FavoritesRepo favRepo;
+	
+	@Autowired
+	HttpSession session;
 	
 //	@RequestMapping("/")
 //	public ModelAndView home() throws ResponseException {
@@ -103,7 +115,12 @@ public class PTWController {
 
 		String staticMap = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude
 				+ "&zoom=12&size=555x300&scale=2&key=" + googleKey;
-
+//		query database and get favorites and put in variable.execute();
+		User user = (User) session.getAttribute("user");
+		List<Favorites> checkedFavs = favRepo.findByUserName(user.getUserName());
+		List<String> activityNames = checkedFavs.stream().map(Favorites::getActivityName).collect(Collectors.toList());
+		System.out.println(activityNames);
+		mv.addObject("activityNames", activityNames);
 		System.out.println(staticMap);
 		mv.addObject("distance", output);
 		mv.addObject("googleKey", googleKey);
