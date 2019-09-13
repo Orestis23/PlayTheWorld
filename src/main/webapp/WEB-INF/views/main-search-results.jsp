@@ -57,7 +57,10 @@
 				&zoom=13&markers=size:tiny|${c.geoCode.latitude},${c.geoCode.longitude}&size=100x100&scale=2&key=${ googleKey}"></td>
 					<td><input
 						onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }'"
-						type="checkbox" id="favorites" name="favorite">${c.name }</td>
+						type="checkbox" id="favorites" name="favorite" <c:if test="${activityNames.contains(c.name)}">
+					checked
+					</c:if>>${c.name } </td>
+					
 					<td>${c.category }</td>
 					<%-- <td>${c.geoCode.latitude }</td>
 					<td>${c.geoCode.longitude }</td> --%>
