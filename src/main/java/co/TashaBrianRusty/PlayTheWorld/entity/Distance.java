@@ -7,6 +7,7 @@ import org.gavaghan.geodesy.GlobalCoordinates;
 
 public class Distance {
 
+	// Initialize data
 	GeodeticCalculator geoCalc = new GeodeticCalculator();
 	Ellipsoid reference = Ellipsoid.WGS84;
 //	GlobalCoordinates origin = new GlobalCoordinates(42.3356398, -83.0502464);
@@ -31,6 +32,7 @@ public class Distance {
 		this.output = output;
 	}
 
+	// Primary calculation method
 	public Distance(double lat1, double lon1, double lat2, double lon2) {
 		this.origin = new GlobalCoordinates(lat1, lon1);
 		this.destination = new GlobalCoordinates(lat2, lon2);

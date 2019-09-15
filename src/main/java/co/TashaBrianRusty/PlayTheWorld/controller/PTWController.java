@@ -24,6 +24,7 @@ import com.amadeus.resources.PointOfInterest;
 @Controller
 public class PTWController {
 
+	// Stored values for API keys
 	@Value("${amadeus.key}")
 	String amadeusKey;
 
@@ -49,13 +50,18 @@ public class PTWController {
 	@RequestMapping("main-search")
 	public ModelAndView mainSearch(@RequestParam("msearch") String msearch) throws ResponseException {
 		ModelAndView mv = new ModelAndView("main-search-results");
+		
+		// Builder to access Amadeus
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
 		
+		// Call locations based on supplied keyword
 		Location[] locations = amadeus.referenceData.locations
 				.get(Params.with("keyword", msearch.toUpperCase()).and("subType", Locations.CITY));
+		// Initialize geocode for below functions
 		double latitude = 0;
 		double longitude = 0;
 
+		// set geocode depending city selected for points of interest
 		switch (msearch) {
 		case ("London"):
 			latitude = locations[0].getGeoCode().getLatitude();
@@ -87,7 +93,8 @@ public class PTWController {
 			break;
 		}
 
-		
+		// Set geocodes for calculating travel distance from home
+		// Currently hard-wired to Detroit
 		double lat1 = 42.3356398;
 		double lon1 = -83.0502464;
 		double lat2 = latitude;
@@ -95,15 +102,19 @@ public class PTWController {
 		Distance distance = new Distance(lat1, lon1, lat2, lon2);
 		int output = (int) distance.getOutput();
 
-		
+		// Sysouts for testing
 		System.out.println(latitude);
 		System.out.println(longitude);
+		
+		// Call points of interest based on supplied geocode
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
 				.get(Params.with("latitude", latitude).and("longitude", longitude));
 
+		// Prep to call Google maps for big city map
 		String staticMap = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude
 				+ "&zoom=12&size=555x300&scale=2&key=" + googleKey;
 
+		// Add all data to the view
 		System.out.println(staticMap);
 		mv.addObject("distance", output);
 		mv.addObject("googleKey", googleKey);
@@ -114,6 +125,7 @@ public class PTWController {
 		return mv;
 	}
 
+	// Individual city view
 	@RequestMapping("city-detail")
 	public ModelAndView cityDetail(@RequestParam("cityName") String city) throws ResponseException {
 		ModelAndView mv = new ModelAndView("city-info");
@@ -126,6 +138,7 @@ public class PTWController {
 		return mv;
 	}
 
+	// Response to clicking on keywords
 	@RequestMapping("keyword-filter")
 	public ModelAndView filterKeyword(@RequestParam("keyword") String tag, @RequestParam("latitude") double latitude,
 			@RequestParam("longitude") double longitude) throws ResponseException {
@@ -133,12 +146,16 @@ public class PTWController {
 		Amadeus amadeus = Amadeus.builder(amadeusKey, amadeusSecret).build();
 		PointOfInterest[] points = amadeus.referenceData.locations.pointsOfInterest
 				.get(Params.with("latitude", latitude).and("longitude", longitude));
+		
+		// Passes clicked-on keyword to the next page
 		String keyword = tag;
 		mv.addObject("keyword", keyword);
 		mv.addObject("points", points);
 		return mv;
 	}
 
+	// Handles pagination
+	// Currently non-functional
 	@RequestMapping("points-next")
 	public ModelAndView pointsFirst(@RequestAttribute("next") String link) throws ResponseException {
 		ModelAndView mv = new ModelAndView("main-search-results");

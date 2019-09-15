@@ -11,14 +11,18 @@ import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
 @Controller
 public class TripController {
 
+	// Test controller for getting distance calculation data
 	@RequestMapping("distance")
 	public ModelAndView distance() throws IOException {
 		ModelAndView mv = new ModelAndView("distance");
+		
+		// Set dummy geocode
 		double lat1 = 42.3356398;
 		double lon1 = -83.0502464;
 		double lat2 = 42.3667297;
 		double lon2 = -71.0150276;
 		
+		// Submit geocodes to calculator
 		Distance distance = new Distance(lat1, lon1, lat2, lon2);
 		double output = distance.getOutput();
 
