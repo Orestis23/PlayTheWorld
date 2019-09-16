@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amadeus.Amadeus;
@@ -15,11 +14,10 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.referenceData.Locations;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.Location.Address;
+import com.amadeus.resources.PointOfInterest;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
-
-import com.amadeus.resources.PointOfInterest;
 
 @Controller
 public class PTWController {
