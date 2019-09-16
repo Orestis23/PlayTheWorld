@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
 
-public interface LocVisitedRepo extends JpaRepository<LocVisited, Long>{
+public interface LocVisitedRepo extends JpaRepository<LocVisited, Integer>{
 
 	List<LocVisited> findByUserName(String userName);
 }

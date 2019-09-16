@@ -27,6 +27,9 @@ public class FavoritesController {
 	@Autowired
 	HttpSession session;
 	
+	@Autowired
+	LocVisitedRepo locVisRepo;
+	
 	
 	
 	@RequestMapping("/addFavAtt")
@@ -61,11 +64,11 @@ public class FavoritesController {
 		return mv;
 	}
 	
-//	@RequestMapping("/delLocVisited")
-//	public ModelAndView delLocVis(@RequestParam("idDelete") int id) {
-//		LocVisitedRepo.deleteById(id);
-//		User user = (User) session.getAttribute("user");
-//		
-//		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
-//	}
+	@RequestMapping("/delLocVisited")
+	public ModelAndView delLocVis(@RequestParam("idDelete") int id) {
+		locVisRepo.deleteById(id);
+		User user = (User) session.getAttribute("user");
+		
+		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
+	}
 }

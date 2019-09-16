@@ -22,9 +22,11 @@ import com.amadeus.resources.Location.Address;
 import com.amadeus.resources.PointOfInterest;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
+import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
+import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 @Controller
@@ -50,6 +52,9 @@ public class PTWController {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	LocVisitedRepo locVisRepo;
 	
 //	@RequestMapping("/")
 //	public ModelAndView home() throws ResponseException {
@@ -119,7 +124,9 @@ public class PTWController {
 		User user = (User) session.getAttribute("user");
 		List<Favorites> checkedFavs = favRepo.findByUserName(user.getUserName());
 		List<String> activityNames = checkedFavs.stream().map(Favorites::getActivityName).collect(Collectors.toList());
-	
+		List<LocVisited> checkedLocs = locVisRepo.findByUserName(user.getUserName());
+		List<String> locationNames = checkedLocs.stream().map(LocVisited::getActivityName).collect(Collectors.toList());
+		
 		mv.addObject("activityNames", activityNames);
 		System.out.println(staticMap);
 		mv.addObject("distance", output);
@@ -128,6 +135,7 @@ public class PTWController {
 		mv.addObject("points", points);
 		mv.addObject("msearch", msearch);
 		mv.addObject("map", staticMap);
+		mv.addObject("locationNames", locationNames);
 		return mv;
 	}
 
