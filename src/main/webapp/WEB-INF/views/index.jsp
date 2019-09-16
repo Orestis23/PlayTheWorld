@@ -47,7 +47,6 @@
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
-				<p>${userInfo.locVisited }</p>
 				
 				<%-- <c:forEach var="locv" items="${list }" varStatus="i">
 					<tr>

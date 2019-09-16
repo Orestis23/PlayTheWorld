@@ -20,7 +20,6 @@ public class User {
 	private String eMail;
 	private String homeBase;
 	private String currentPoints;
-	private String locVisited;
 	private String favCities;
 	private String favActivities;
 	private String profileImage;
@@ -100,14 +99,6 @@ public class User {
 		this.currentPoints = currentPoints;
 	}
 
-	public String getLocVisited() {
-		return locVisited;
-	}
-
-	public void setLocVisited(String locVisited) {
-		this.locVisited = locVisited;
-	}
-
 	public String getFavCities() {
 		return favCities;
 	}
@@ -127,7 +118,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
-				+ ", currentPoints=" + currentPoints + ", locVisited=" + locVisited + ", favCities=" + favCities
+				+ ", currentPoints=" + currentPoints + ", favCities=" + favCities
 				+ ", favActivities=" + favActivities + ", profileImage=" + profileImage + ", password=" + password
 				+ ", imageList=" + imageList + "]";
 	}

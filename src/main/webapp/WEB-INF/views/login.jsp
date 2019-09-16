@@ -27,18 +27,18 @@ Upload pictures and stuff for points etc etc etc
 <div align="center">
 Register here!
 
-<form action="register">
+<form action="submit-person" method="post">
 		<input type="text" name="userName" placeholder="Enter your User-Name" style="width: 50%;">
-		<input type="text" name="eMail" placeholder="Your@EMailAddress.com" style="width: 50%;"> 
-		<input type="text" name="password" placeholder="Enter your Password" style="width: 50%;"> 
+		<input type="email" name="eMail" placeholder="email@domain.com" style="width: 50%;" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">	 
+		<input type="password" name="password" placeholder="Enter your Password" style="width: 50%;"> 
 		<input class="btn btn-primary" type="submit" value="Register">
 	</form>
 	
 Login with the e-mail address you used when you created your account.
 
-<form action="login">
-		<input type="text" name="eMail" placeholder="Enter your E-Mail Address" style="width: 50%;"> 
-		<input type="text" name="password" placeholder="Enter your Password" style="width: 50%;"> 
+<form action="login" method="post">
+		<input type="email" name="eMail" placeholder="email@domain.com" style="width: 50%;" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">	 
+		<input type="password" name="password" placeholder="Enter your Password" style="width: 50%;"> 
 		<input class="btn btn-primary" type="submit" value="Login">
 	</form>
 </div>	
