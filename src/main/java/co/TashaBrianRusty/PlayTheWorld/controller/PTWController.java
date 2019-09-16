@@ -119,7 +119,7 @@ public class PTWController {
 		User user = (User) session.getAttribute("user");
 		List<Favorites> checkedFavs = favRepo.findByUserName(user.getUserName());
 		List<String> activityNames = checkedFavs.stream().map(Favorites::getActivityName).collect(Collectors.toList());
-		System.out.println(activityNames);
+	
 		mv.addObject("activityNames", activityNames);
 		System.out.println(staticMap);
 		mv.addObject("distance", output);

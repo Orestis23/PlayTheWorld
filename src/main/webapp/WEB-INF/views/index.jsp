@@ -48,7 +48,19 @@
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
 				<p>${userInfo.locVisited }</p>
-				<!-- Add a loop around this for mult. locations -->
+				
+				<%-- <c:forEach var="locv" items="${list }" varStatus="i">
+					<tr>
+
+						
+						<button class="btn btn-warning"><a href="delFavAtt?idDelete=${locv.id }">Remove</a></td></button>
+						<td>${locv.activityName }<br></td>  Need to create delLocVis method and change syntax above
+
+					</tr>
+				</c:forEach> --%>
+				
+				
+				
 				<h3>Favorite Cities</h3>
 				<p>${userInfo.favCities }</p>
 				<!-- Add a loop around this for mult. locations -->
@@ -59,7 +71,7 @@
 				<c:forEach var="att" items="${list }" varStatus="i">
 					<tr>
 
-						<h1></h1>
+				
 						<button class="btn btn-warning"><a href="delFavAtt?idDelete=${att.id }">Remove</a></td></button>
 						<td>${att.activityName }<br></td>
 

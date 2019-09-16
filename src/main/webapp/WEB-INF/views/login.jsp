@@ -29,7 +29,7 @@ Register here!
 
 <form action="register">
 		<input type="text" name="userName" placeholder="Enter your User-Name" style="width: 50%;">
-		<input type="text" name="eMail" placeholder="Enter your E-mail Address" style="width: 50%;"> 
+		<input type="text" name="eMail" placeholder="Your@EMailAddress.com" style="width: 50%;"> 
 		<input type="text" name="password" placeholder="Enter your Password" style="width: 50%;"> 
 		<input class="btn btn-primary" type="submit" value="Register">
 	</form>

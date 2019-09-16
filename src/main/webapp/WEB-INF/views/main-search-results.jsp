@@ -10,7 +10,7 @@
 <meta charset="ISO-8859-1">
 <title>Search Results</title>
 </head>
-<body>
+<body background="https://www.esri.com/arcgis-blog/wp-content/uploads/2017/09/WhiteNoVignette.jpg">
 	<div class="container">
 		<br> <img src="${map }">
 		<br><br>
@@ -45,6 +45,7 @@
 			<tr>
 				<th></th>
 				<th>Name (Select to Mark as Favorite)</th>
+				<th>Select if you visited here!</th>
 				<th>Location Type</th>
 				<!-- <th>Latitude</th>
 				<th>Longitude</th> -->
@@ -56,11 +57,15 @@
 					<td><img src="https://maps.googleapis.com/maps/api/staticmap?center=${c.geoCode.latitude},${c.geoCode.longitude}
 				&zoom=13&markers=size:tiny|${c.geoCode.latitude},${c.geoCode.longitude}&size=100x100&scale=2&key=${ googleKey}"></td>
 					<td><input
-						onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }'"
+						onchange="window.location.href='/addFavAtt?attName=${c.name }&msearch=${msearch }&isChecked='+ this.checked"
 						type="checkbox" id="favorites" name="favorite" <c:if test="${activityNames.contains(c.name)}">
 					checked
 					</c:if>>${c.name } </td>
-					
+					<td><input
+						onchange="window.location.href='/addLocVisited?attName=${c.name }&msearch=${msearch }&isChecked='+ this.checked"
+						type="checkbox" id="locVisited" name="locVisited" <c:if test="${activityNames.contains(c.name)}">
+					checked
+					</c:if>>${c.name } </td>
 					<td>${c.category }</td>
 					<%-- <td>${c.geoCode.latitude }</td>
 					<td>${c.geoCode.longitude }</td> --%>

@@ -1,8 +1,5 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.AttractionRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
+import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
+import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 @Controller
@@ -31,12 +30,16 @@ public class FavoritesController {
 	
 	
 	@RequestMapping("/addFavAtt")
-	public ModelAndView addFavAtt(String attName, String msearch) {
-
+	public ModelAndView addFavAtt(String attName, String msearch, boolean isChecked) {
+		System.out.println(isChecked);
 		User user = (User) session.getAttribute("user");
 		Favorites favorite = new Favorites(user.getUserName(), attName);
-		favRepo.save(favorite);
-
+		if (isChecked == true) {
+			favRepo.save(favorite);
+		}
+		else {
+			favRepo.delete(favorite);
+		}
 		ModelAndView mv = new ModelAndView("forward:/main-search");
 
 		return mv;
@@ -49,4 +52,20 @@ public class FavoritesController {
 		
 		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
 	}
+	
+	@RequestMapping("/addLocVisited")
+	public ModelAndView locVisited(String attName, String msearch) {
+		User user = (User) session.getAttribute("user");
+		LocVisited visited = new LocVisited(user.getUserName(), attName);
+		ModelAndView mv = new ModelAndView("forward:/main-search");
+		return mv;
+	}
+	
+//	@RequestMapping("/delLocVisited")
+//	public ModelAndView delLocVis(@RequestParam("idDelete") int id) {
+//		LocVisitedRepo.deleteById(id);
+//		User user = (User) session.getAttribute("user");
+//		
+//		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
+//	}
 }
