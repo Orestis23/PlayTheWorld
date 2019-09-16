@@ -98,7 +98,7 @@ public class User {
 	public void setCurrentPoints(String currentPoints) {
 		this.currentPoints = currentPoints;
 	}
-
+	
 	public String getFavCities() {
 		return favCities;
 	}
@@ -118,9 +118,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
-				+ ", currentPoints=" + currentPoints + ", favCities=" + favCities
-				+ ", favActivities=" + favActivities + ", profileImage=" + profileImage + ", password=" + password
-				+ ", imageList=" + imageList + "]";
+				+ ", currentPoints=" + currentPoints + ", favCities=" + favCities + ", favActivities=" + favActivities
+				+ ", profileImage=" + profileImage + ", password=" + password + ", imageList=" + imageList + "]";
 	}
+
+
+
 
 }

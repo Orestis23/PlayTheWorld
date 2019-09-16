@@ -57,9 +57,15 @@ public class FavoritesController {
 	}
 	
 	@RequestMapping("/addLocVisited")
-	public ModelAndView locVisited(String attName, String msearch) {
+	public ModelAndView locVisited(String attName, String msearch, boolean isChecked) {
 		User user = (User) session.getAttribute("user");
 		LocVisited visited = new LocVisited(user.getUserName(), attName);
+		if (isChecked == true) {
+			locVisRepo.save(visited);
+		}
+		else {
+			locVisRepo.delete(visited);
+		}
 		ModelAndView mv = new ModelAndView("forward:/main-search");
 		return mv;
 	}

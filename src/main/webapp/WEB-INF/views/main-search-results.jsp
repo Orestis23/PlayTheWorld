@@ -9,9 +9,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Search Results</title>
+	<!-- <script>
+function goBack() {
+  window.history.back(-2);
+}
+</script> -->
 </head>
-<body background="https://www.esri.com/arcgis-blog/wp-content/uploads/2017/09/WhiteNoVignette.jpg">
+<body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
 	<div class="container">
+
+<a class="btn btn-warning" href="login?eMail=" + u.geteMail()">Go Back</a>
 		<br> <img src="${map }">
 		<br><br>
 		<h1>City Info</h1>

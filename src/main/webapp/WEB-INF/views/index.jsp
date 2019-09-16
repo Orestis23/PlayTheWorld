@@ -13,7 +13,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${userInfo.userName }'s Travels!</title>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js"
 	type="text/javascript">  </script>
 
@@ -48,19 +48,16 @@
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
 				
-				<%-- <c:forEach var="locv" items="${list }" varStatus="i">
+				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
 
 						
-						<button class="btn btn-warning"><a href="delFavAtt?idDelete=${locv.id }">Remove</a></td></button>
-						<td>${locv.activityName }<br></td>  Need to create delLocVis method and change syntax above
-
+						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
+						<td>${locv.activityName }<br></td> 
 					</tr>
-				</c:forEach> --%>
+				</c:forEach>
 				
 				
-				
-				<h3>Favorite Cities</h3>
 				<p>${userInfo.favCities }</p>
 				<!-- Add a loop around this for mult. locations -->
 				<h3>Favorite Activities</h3>
@@ -71,7 +68,7 @@
 					<tr>
 
 				
-						<button class="btn btn-warning"><a href="delFavAtt?idDelete=${att.id }">Remove</a></td></button>
+						<a class="btn btn-warning" href="delFavAtt?idDelete=${att.id }">Remove</a>
 						<td>${att.activityName }<br></td>
 
 					</tr>
