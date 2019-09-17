@@ -26,6 +26,8 @@ public class User {
 	private String password;
 //	@JsonProperty("image_url")
 //	private String imageUrl;
+	private long geoCodeLat;
+	private long geoCodeLon;
 
 	@OneToMany(mappedBy = "user")
 	private List<UserImage> imageList;
@@ -33,6 +35,22 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public long getGeoCodeLat() {
+		return geoCodeLat;
+	}
+
+	public void setGeoCodeLat(long geoCodeLat) {
+		this.geoCodeLat = geoCodeLat;
+	}
+
+	public long getGeoCodeLon() {
+		return geoCodeLon;
+	}
+
+	public void setGeoCodeLon(long geoCodeLon) {
+		this.geoCodeLon = geoCodeLon;
 	}
 
 	public List<UserImage> getImageList() {

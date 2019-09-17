@@ -30,7 +30,8 @@
 				<th>Travel Score</th>
 				<th>Points for Visiting</th>
 			</tr>
-<c:forEach var="c" items="${locations }" begin="0" end="0">
+
+		<c:forEach var="c" items="${locations }" begin="0" end="0">
                 <tr>
                     <td><c:url value="/city-detail" var="url">
                             <c:param name="cityName" value="${c.id}" />
@@ -43,6 +44,21 @@
                     <td>${distance }</td>
                     </tr>
                     </c:forEach>
+
+ 			<c:forEach var="c" items="${locations }" begin="0" end="0">
+				<tr>
+					<td><c:url value="/city-detail" var="url">
+							<c:param name="cityName" value="${c.id}" />
+						</c:url> <a href="${url}">${c.name }</a></td>
+					<%-- <td>${c.subType }</td> --%>
+					<td>${c.iataCode }</td>
+					<%-- <td>${c.geoCode.latitude }</td>
+					<td>${c.geoCode.longitude }</td> --%>
+					<td>${c.analytics.travelers.score }</td>
+					<td>${distance }</td>
+				</tr>
+ 			</c:forEach> 
+
 		</table>
 		<br>
 		<h1>Points of Interest</h1>
