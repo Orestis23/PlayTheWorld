@@ -15,9 +15,6 @@
 	<div class="container">
 
 
-<a class="btn btn-warning" href="login?eMail=" + u.geteMail()">Go Back</a>
-		<br><br> <img src="${map }" height="500px">
-
 <a class="btn btn-warning" href="login?eMail=${user.eMail }">Go Back</a>
 		<br> <img src="${map }">
 
@@ -33,19 +30,19 @@
 				<th>Travel Score</th>
 				<th>Points for Visiting</th>
 			</tr>
-<%-- 			<c:forEach var="c" items="${locations }"> --%>
-				<tr>
-					<td><c:url value="/city-detail" var="url">
-							<c:param name="cityName" value="${locations.id}" />
-						</c:url> <a href="${url}">${locations.name }</a></td>
-					<%-- <td>${c.subType }</td> --%>
-					<td>${locations.iataCode }</td>
-					<%-- <td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td> --%>
-					<td>${lactions.analytics.travelers.score }</td>
-					<td>${distance }</td>
-				</tr>
-<%-- 			</c:forEach> --%>
+<c:forEach var="c" items="${locations }" begin="0" end="0">
+                <tr>
+                    <td><c:url value="/city-detail" var="url">
+                            <c:param name="cityName" value="${c.id}" />
+                        </c:url> <a href="${url}">${c.name }</a></td>
+                    <%-- <td>${c.subType }</td> --%>
+                    <td>${c.iataCode }</td>
+                    <%-- <td>${c.geoCode.latitude }</td>
+                    <td>${c.geoCode.longitude }</td> --%>
+                    <td>${c.analytics.travelers.score }</td>
+                    <td>${distance }</td>
+                    </tr>
+                    </c:forEach>
 		</table>
 		<br>
 		<h1>Points of Interest</h1>

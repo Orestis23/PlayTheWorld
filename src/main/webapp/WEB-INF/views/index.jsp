@@ -64,8 +64,6 @@
 					
 					</tr>
 				</c:forEach>
-					
-				
 				
 			<%-- 	<p>${userInfo.favCities }</p> --%>
 				<!-- Add a loop around this for mult. locations -->
@@ -87,9 +85,9 @@
 				</c:forEach>
 
 			</div>
-			<div class="col-lg-8">
+			 <div class="col-lg-8">
 				<button onclick="showUploadWidget()" id="opener"
-					class="cloudinary-button">Upload New Image</button>
+					class="cloudinary-button">Upload New Image</button> 
 				<br>
 				<c:forEach var="img" items="${imageList }">
 					<img src="${img.url}" height="250px" width="250px">
