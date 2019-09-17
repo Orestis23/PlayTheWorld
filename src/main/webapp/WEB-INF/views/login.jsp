@@ -35,7 +35,7 @@ Register here!
 		<input type="text" class="form-control" name="userName" placeholder="Enter your User-Name" style="width: 50%;" required>
 		<input type="email" class="form-control" name="eMail" placeholder="email@domain.com" style="width: 50%;" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>	 
 		<input type="password" class="form-control" name="password" placeholder="Enter your Password" style="width: 50%;" required> 
-		<input type="homebase" class="form-control" name="homeBase" placeholder="Enter your Home City" style="width: 50%;" required> 
+		<input type="text" class="form-control" name="homeBase" placeholder="Enter your Home City" style="width: 50%;" required> 
 		<input class="btn btn-primary" type="submit" value="Register">
 	</form>
 	

@@ -6,9 +6,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
@@ -39,6 +44,9 @@ public class UserController {
 
 	@Value("${upload.preset}")
 	String preset;
+	
+	@Value("${google.key}")
+	String googleKey;
 
 	@RequestMapping("/")
 	public ModelAndView home() {
@@ -80,6 +88,14 @@ public class UserController {
 //		 String hashpw1 = BCrypt.hashpw(person.getPassword(), BCrypt.gensalt());
 //		System.out.println(hashpw);
 //		 person.setPassword(hashpw1);
+		RestTemplate rt = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		String address = person.getHomeBase();
+		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + googleKey;
+		HttpEntity<String> request = new HttpEntity<>("Parameters", headers);
+		ResponseEntity<String> response = rt.exchange(url, HttpMethod.GET, request, String.class);
+
+		
 		userRepo.save(person);
 		return new ModelAndView("person-confirm", "personinfo", person);
 	}

@@ -1,34 +1,34 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
-import java.io.IOException;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-
-import co.TashaBrianRusty.PlayTheWorld.entity.Distance;
 
 @Controller
 public class TripController {
 
+	@Value("${google.key}")
+	String googleKey;
+
 	// Test controller for getting distance calculation data
 	@RequestMapping("distance")
-	public ModelAndView distance() throws IOException {
+	public ModelAndView hometown() {
 		ModelAndView mv = new ModelAndView("distance");
-		
-		// Set dummy geocode
-		double lat1 = 42.3356398;
-		double lon1 = -83.0502464;
-		double lat2 = 42.3667297;
-		double lon2 = -71.0150276;
-		
-		// Submit geocodes to calculator
-		Distance distance = new Distance(lat1, lon1, lat2, lon2);
-		double output = distance.getOutput();
+		RestTemplate rt = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		String address = "New York";
 
-		System.out.println(output);
+		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + googleKey;
 
-		mv.addObject("response", output);
+		HttpEntity<String> request = new HttpEntity<>("Parameters", headers);
+		ResponseEntity<String> response = rt.exchange(url, HttpMethod.GET, request, String.class);
+		mv.addObject("response", response.getBody());
 		return mv;
 	}
 }

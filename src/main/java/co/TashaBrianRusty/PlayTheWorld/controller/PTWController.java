@@ -111,10 +111,16 @@ public class PTWController {
 			break;
 		}
 
+//		query database and get favorites and put in variable.execute();
+		User user = (User) session.getAttribute("user");
+		List<Favorites> checkedFavs = favRepo.findByUserName(user.getUserName());
+		List<String> activityNames = checkedFavs.stream().map(Favorites::getActivityName).collect(Collectors.toList());
+		List<LocVisited> checkedLocs = locVisRepo.findByUserName(user.getUserName());
+		List<String> locationNames = checkedLocs.stream().map(LocVisited::getActivityName).collect(Collectors.toList());
+
 		// Set geocodes for calculating travel distance from home
-		// Currently hard-wired to Detroit
-		double lat1 = 42.3356398;
-		double lon1 = -83.0502464;
+		double lat1 = user.getGeoCodeLat();
+		double lon1 = user.getGeoCodeLon();
 		double lat2 = latitude;
 		double lon2 = longitude;
 		Distance distance = new Distance(lat1, lon1, lat2, lon2);
@@ -132,12 +138,6 @@ public class PTWController {
 		String staticMap = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude
 				+ "&zoom=12&size=555x300&scale=2&key=" + googleKey;
 
-//		query database and get favorites and put in variable.execute();
-		User user = (User) session.getAttribute("user");
-		List<Favorites> checkedFavs = favRepo.findByUserName(user.getUserName());
-		List<String> activityNames = checkedFavs.stream().map(Favorites::getActivityName).collect(Collectors.toList());
-		List<LocVisited> checkedLocs = locVisRepo.findByUserName(user.getUserName());
-		List<String> locationNames = checkedLocs.stream().map(LocVisited::getActivityName).collect(Collectors.toList());
 
 		mv.addObject("activityNames", activityNames);
 
