@@ -82,12 +82,12 @@ public class PTWController {
 		// set geocode depending city selected for points of interest
 		switch (msearch) {
 		case ("London"):
-			latitude = locations[0].getGeoCode().getLatitude();
-			longitude = locations[0].getGeoCode().getLongitude();
+			latitude = 51.5024415;
+			longitude = -0.115465;
 			break;
 		case ("New York"):
-			latitude = locations[0].getGeoCode().getLatitude();
-			longitude = locations[0].getGeoCode().getLongitude();
+			latitude = 40.744817;
+			longitude = -74.0005255;
 			break;
 		case ("Barcelona"):
 			latitude = 41.3837315;
