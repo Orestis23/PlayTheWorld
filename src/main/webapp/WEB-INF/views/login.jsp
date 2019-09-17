@@ -15,7 +15,7 @@
 
 <div align="center">
 <h1>Trek Star</h1>
-<img src="http://www.clipartbest.com/cliparts/LcK/zLx/LcKzLxLca.jpeg">
+<img src="https://i7.pngguru.com/preview/914/94/386/earth-china-travel-poster-global-earth-globe-travel-world-architecture.jpg">
 <h3>
 Traveling the world gives you points in life!  Track how many points you have in life by trekking across the world with Trek Star!  
 The further you travel the more points you'll get.  

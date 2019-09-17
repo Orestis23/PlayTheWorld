@@ -15,21 +15,18 @@ public class LocVisited {
 	private Integer id;
 	private String userName;
 	private String activityName;
-	
+
 	public LocVisited() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	public LocVisited(String userName, String activityName) {
-		
+		super();
+
 		this.userName = userName;
 		this.activityName = activityName;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -59,7 +56,5 @@ public class LocVisited {
 	public String toString() {
 		return "LocVisited [id=" + id + ", userName=" + userName + ", activityName=" + activityName + "]";
 	}
-	
-	
-	
+
 }

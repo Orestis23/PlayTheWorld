@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +46,7 @@ public class UserController {
 		return new ModelAndView("login");
 	}
 
-	@PostMapping("/login")
+	@RequestMapping("/login")
 	public ModelAndView submitLogin(String eMail) {
 		ModelAndView mv = new ModelAndView("index");
 		User user = userRepo.findByeMail(eMail);

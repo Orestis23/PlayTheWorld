@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "favorites")
 public class Favorites {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -23,7 +23,7 @@ public class Favorites {
 
 	public Favorites(String userName, String activityName) {
 		super();
-		
+
 		this.userName = userName;
 		this.activityName = activityName;
 	}
