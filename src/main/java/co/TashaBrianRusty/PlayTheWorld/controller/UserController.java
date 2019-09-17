@@ -1,6 +1,7 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
+import co.TashaBrianRusty.PlayTheWorld.Repo.UserImageRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
 import co.TashaBrianRusty.PlayTheWorld.entity.Homebase;
@@ -27,6 +29,9 @@ import co.TashaBrianRusty.PlayTheWorld.entity.UserImage;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	UserImageRepo usImgRepo;
 
 	@Autowired
 	FavoritesRepo favRepo;
@@ -51,10 +56,21 @@ public class UserController {
 
 	@RequestMapping("/")
 	public ModelAndView home() {
-//		List<User> users = userRepo.findAll();
+
 		return new ModelAndView("login");
 	}
 
+
+	@RequestMapping("register")
+	public ModelAndView personPage() {
+		ModelAndView mv = new ModelAndView("login", "modelName", "Hello World!");
+		User p = new User();
+		mv.addObject("personA", p);
+		System.out.println();
+		return mv;
+
+	}
+	
 	@RequestMapping("/login")
 	public ModelAndView submitLogin(String eMail) {
 		ModelAndView mv = new ModelAndView("index");
@@ -69,18 +85,8 @@ public class UserController {
 		mv.addObject("name", cloudName);
 		mv.addObject("preset", preset);
 		mv.addObject("list", favoriteAtt);
-
+		
 		return mv;
-	}
-
-	@RequestMapping("register")
-	public ModelAndView personPage() {
-		ModelAndView mv = new ModelAndView("login", "modelName", "Hello World!");
-		User p = new User();
-		mv.addObject("personA", p);
-		System.out.println();
-		return mv;
-
 	}
 
 	@PostMapping("submit-person")
@@ -101,5 +107,13 @@ public class UserController {
 		userRepo.save(person);
 		System.out.println(person.toString());
 		return new ModelAndView("person-confirm", "personinfo", person);
+	}
+	
+	@RequestMapping("tripData")
+	public ModelAndView tripContent() {
+		List<User> users = userRepo.findAll();
+		
+		ModelAndView mv = new ModelAndView("tripData", "userTripInfo", users);
+		return mv;
 	}
 }

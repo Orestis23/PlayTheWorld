@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,9 +37,20 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<UserImage> imageList;
 
+	@OneToMany(mappedBy = "user")
+	private List<LocVisited> locVisList;
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<LocVisited> getLocVisList() {
+		return locVisList;
+	}
+
+	public void setLocVisList(List<LocVisited> locVisList) {
+		this.locVisList = locVisList;
 	}
 
 	public double getGeoCodeLat() {

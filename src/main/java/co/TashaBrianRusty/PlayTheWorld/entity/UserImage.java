@@ -1,18 +1,22 @@
 package co.TashaBrianRusty.PlayTheWorld.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_image")
 public class UserImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String url;
+
 	@ManyToOne
 	private User user;
 
@@ -47,7 +51,7 @@ public class UserImage {
 
 	@Override
 	public String toString() {
-		return "UserImage [url=" + url + "]";
+		return "UserImage [id=" + id + ", url=" + url + "]";
 	}
 
 }
