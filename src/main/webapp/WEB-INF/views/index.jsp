@@ -50,7 +50,7 @@
 
 				<h3>Your Dashboard</h3>
 				<p>${userInfo.userName }</p>
-				<p><img src="${userInfo.profileImage }">
+				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p>${userInfo.eMail }</p>
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
@@ -91,7 +91,7 @@
 				<br>
 				<c:forEach var="img" items="${imageList }">
 					<img src="${img.url}" height="250px" width="250px">
-					<a href="delImage?imageId=${img.id }">Remove</a>
+					<a id="link" href="delImage?imageId=${img.id }">Remove</a>
 					
 				</c:forEach>
 
