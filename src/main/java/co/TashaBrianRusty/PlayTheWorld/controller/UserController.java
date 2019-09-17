@@ -47,7 +47,7 @@ public class UserController {
 		return new ModelAndView("login");
 	}
 
-	@PostMapping("/login")
+	@RequestMapping("/login")
 	public ModelAndView submitLogin(String eMail) {
 		ModelAndView mv = new ModelAndView("index");
 		User user = userRepo.findByeMail(eMail);
@@ -78,9 +78,9 @@ public class UserController {
 	@PostMapping("submit-person")
 	public ModelAndView submitForm(User person) {
 //		System.out.println(person.getPassword());
-//		 String hashpw1 = BCrypt.hashpw(person.getPassword(), BCrypt.gensalt());
+		 String hashpw1 = BCrypt.hashpw(person.getPassword(), BCrypt.gensalt());
 //		System.out.println(hashpw);
-//		 person.setPassword(hashpw1);
+		 person.setPassword(hashpw1);
 		userRepo.save(person);
 		return new ModelAndView("person-confirm", "personinfo", person);
 	}

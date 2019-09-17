@@ -19,7 +19,7 @@ function goBack() {
 	<div class="container">
 
 <a class="btn btn-warning" href="login?eMail=" + u.geteMail()">Go Back</a>
-		<br> <img src="${map }">
+		<br><br> <img src="${map }" height="500px">
 		<br><br>
 		<h1>City Info</h1>
 		<table class="table">

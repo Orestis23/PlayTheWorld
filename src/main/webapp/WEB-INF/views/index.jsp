@@ -40,7 +40,6 @@
 
 
 
-
 				<h3>Your Information</h3>
 				<p>${userInfo.userName }</p>
 				<p>${userInfo.eMail }</p>
@@ -50,7 +49,6 @@
 				
 				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
-
 						
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
 						<td>${locv.activityName }<br></td> 
@@ -81,7 +79,8 @@
 				<br>
 				<c:forEach var="img" items="${imageList }">
 					<img src="${img.url}" height="250px" width="250px">
-
+					<a href="delImage?imageId=${img.id }">Remove</a>
+					
 				</c:forEach>
 
 			</div>
@@ -104,19 +103,7 @@
 			 	
 			 myWidget.open();
 			 }
-	 // Customized upload widget  
-/* 	function showUploadWidget() { cloudinary.openUploadWidget({ cloudName: "${name}", uploadPreset:"${preset}",
-	sources: [ "local", "url", "camera", "image_search", "facebook", "dropbox", "instagram" ],showAdvancedOptions: true, cropping: true, multiple: false,
-	defaultSource: "local", styles: { palette: { window: "#464040", sourceBg: "#292222", windowBorder: "#c7a49f", tabIcon: "#cc6600",
-	inactiveTabIcon: "#E8D5BB", menuIcons: "#ebe5db", link: "#ffb107", action: "#ffcc00", inProgress: "#99cccc", complete: "#78b3b4", error:
-	"#ff6666", textDark: "#4C2F1A", textLight: "#D8CFCF" }, fonts: {default: null, "'Kalam', cursive": { url:
-	"https://fonts.googleapis.com/css?family=Kalam", active: true } } }}, (err, info) => { if (!err) { 
-		window.location.assign("uploadurl?imageURL=" + result.info.url);
-		console.log("Upload Widget event - ",
-	info);
-	}
-	});
-	} */ </script>
+ </script>
 
 
 </body>

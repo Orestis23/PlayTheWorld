@@ -56,5 +56,13 @@ public class CloudinaryController {
 		
 		return new ModelAndView("redirect:/login?eMail=" + u.geteMail());
 	}
+	@RequestMapping("/delImage")
+	public ModelAndView delImage(@RequestParam("imageId") int id) {
+		User user = (User)session.getAttribute("user");
+		//UserImage img =  new UserImage();
+		imgRepo.deleteById(id);
+		
+		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
+	}
 
 }
