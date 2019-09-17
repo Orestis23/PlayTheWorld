@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,7 +18,8 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+
+	private Integer id;
 	@JsonProperty("user_name")
 	private String userName;
 	private String eMail;
@@ -35,9 +37,20 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<UserImage> imageList;
 
+	@OneToMany(mappedBy = "user")
+	private List<LocVisited> locVisList;
+	
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<LocVisited> getLocVisList() {
+		return locVisList;
+	}
+
+	public void setLocVisList(List<LocVisited> locVisList) {
+		this.locVisList = locVisList;
 	}
 
 	public double getGeoCodeLat() {
@@ -80,11 +93,11 @@ public class User {
 		this.profileImage = profileImage;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

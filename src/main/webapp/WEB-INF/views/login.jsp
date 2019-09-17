@@ -18,12 +18,12 @@
 <img src="https://cdn.pixabay.com/photo/2016/04/19/20/36/globe-1339833_960_720.png" height="300" width="300">
 <h3>
 
-<p style = "font-family:georgia"> <font size="5">Share your experiences with others from around the world! Upload images of you with your 
+<p style= "font-family:georgia"> <font size="5">Share your experiences with others from around the world! Upload images of you with your 
 family and friends and leave reviews of popular Restaurants and Activities you enjoy.</p>  
 
-<p style = "font-family:georgia">The further you travel from home, the more TrekPoints you receive to increase your ranking
+<p style= "font-family:georgia">The further you travel from home, the more TrekPoints you receive to increase your ranking
 within the TrekStar community!  Other TrekStars want to see the world and you can help them decide
-which memories to create!</p></font>
+which memories to create!</p>
 </h3>
 </div>
 

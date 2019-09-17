@@ -60,6 +60,7 @@ public class FavoritesController {
 	public ModelAndView locVisited(String attName, String msearch, boolean isChecked) {
 		User user = (User) session.getAttribute("user");
 		LocVisited visited = new LocVisited(user.getUserName(), attName);
+		visited.setUser(user);
 		if (isChecked == true) {
 			locVisRepo.save(visited);
 		}

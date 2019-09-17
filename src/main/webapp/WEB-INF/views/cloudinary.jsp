@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
    var myWidget = cloudinary.applyUploadWidget(document.getElementById('opener'), 
   { cloudName: "${name}", uploadPreset: "${preset}" }, (error, result) => {
 	 console.log("start")
@@ -33,7 +33,7 @@ myWidget.open();
 } 
 
    </script>
-
+ -->
 	<button onclick="upload()" id="opener" class="cloudinary-button">Upload
 		Image</button>
 	<!-- 	<script type="text/javascript" src="js/cloudinary-widget-tasha.js"></script>

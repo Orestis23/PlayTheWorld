@@ -14,8 +14,10 @@
 <body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
 	<div class="container">
 
+
 <a class="btn btn-warning" href="login?eMail=${user.eMail }">Go Back</a>
 		<br> <img src="${map }">
+
 		<br><br>
 		<h1>City Info</h1>
 		<table class="table">
@@ -28,6 +30,21 @@
 				<th>Travel Score</th>
 				<th>Points for Visiting</th>
 			</tr>
+
+		<c:forEach var="c" items="${locations }" begin="0" end="0">
+                <tr>
+                    <td><c:url value="/city-detail" var="url">
+                            <c:param name="cityName" value="${c.id}" />
+                        </c:url> <a href="${url}">${c.name }</a></td>
+                    <%-- <td>${c.subType }</td> --%>
+                    <td>${c.iataCode }</td>
+                    <%-- <td>${c.geoCode.latitude }</td>
+                    <td>${c.geoCode.longitude }</td> --%>
+                    <td>${c.analytics.travelers.score }</td>
+                    <td>${distance }</td>
+                    </tr>
+                    </c:forEach>
+
  			<c:forEach var="c" items="${locations }" begin="0" end="0">
 				<tr>
 					<td><c:url value="/city-detail" var="url">
@@ -41,6 +58,7 @@
 					<td>${distance }</td>
 				</tr>
  			</c:forEach> 
+
 		</table>
 		<br>
 		<h1>Points of Interest</h1>

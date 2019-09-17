@@ -45,11 +45,12 @@
 				</form>
 
 
+				<h3>Your Information</h3>
 
 
 				<h3>Your Dashboard</h3>
 				<p>${userInfo.userName }</p>
-				<p><img src="${userInfo.profileImage }">
+				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p>${userInfo.eMail }</p>
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
@@ -57,15 +58,12 @@
 		
 				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
-
 						
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
 						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td> <br>
 					
 					</tr>
 				</c:forEach>
-					
-				
 				
 			<%-- 	<p>${userInfo.favCities }</p> --%>
 				<!-- Add a loop around this for mult. locations -->
@@ -87,13 +85,14 @@
 				</c:forEach>
 
 			</div>
-			<div class="col-lg-8">
+			 <div class="col-lg-8">
 				<button onclick="showUploadWidget()" id="opener"
-					class="cloudinary-button">Upload New Image</button>
+					class="cloudinary-button">Upload New Image</button> 
 				<br>
 				<c:forEach var="img" items="${imageList }">
 					<img src="${img.url}" height="250px" width="250px">
-
+					<a id="link" href="delImage?imageId=${img.id }">Remove</a>
+					
 				</c:forEach>
 
 			</div>
@@ -116,22 +115,8 @@
 			 	
 			 myWidget.open();
 			 }
-	 // Customized upload widget  
-/* 	function showUploadWidget() { cloudinary.openUploadWidget({ cloudName: "${name}", uploadPreset:"${preset}",
-	sources: [ "local", "url", "camera", "image_search", "facebook", "dropbox", "instagram" ],showAdvancedOptions: true, cropping: true, multiple: false,
-	defaultSource: "local", styles: { palette: { window: "#464040", sourceBg: "#292222", windowBorder: "#c7a49f", tabIcon: "#cc6600",
-	inactiveTabIcon: "#E8D5BB", menuIcons: "#ebe5db", link: "#ffb107", action: "#ffcc00", inProgress: "#99cccc", complete: "#78b3b4", error:
-	"#ff6666", textDark: "#4C2F1A", textLight: "#D8CFCF" }, fonts: {default: null, "'Kalam', cursive": { url:
-	"https://fonts.googleapis.com/css?family=Kalam", active: true } } }}, (err, info) => { if (!err) { 
-		window.location.assign("uploadurl?imageURL=" + result.info.url);
-		console.log("Upload Widget event - ",
-	info);
-	}
-	});
-	} */ </script>
-	
-	
-	
-	
+
+ </script>
+
 </body>
 </html>

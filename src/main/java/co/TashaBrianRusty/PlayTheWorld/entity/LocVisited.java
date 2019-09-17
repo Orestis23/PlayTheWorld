@@ -1,9 +1,12 @@
 package co.TashaBrianRusty.PlayTheWorld.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,10 @@ public class LocVisited {
 	private String userName;
 	private String activityName;
 
+	@ManyToOne
+
+	private User user;
+
 	public LocVisited() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,6 +33,14 @@ public class LocVisited {
 
 		this.userName = userName;
 		this.activityName = activityName;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Integer getId() {
