@@ -9,13 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "User")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer id;
+	@JsonProperty("user_name")
 	private String userName;
 	private String eMail;
 	private String homeBase;
@@ -26,8 +30,8 @@ public class User {
 	private String password;
 //	@JsonProperty("image_url")
 //	private String imageUrl;
-	private long geoCodeLat;
-	private long geoCodeLon;
+	private double geoCodeLat;
+	private double geoCodeLon;
 
 	@OneToMany(mappedBy = "user")
 	private List<UserImage> imageList;
@@ -37,19 +41,19 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getGeoCodeLat() {
+	public double getGeoCodeLat() {
 		return geoCodeLat;
 	}
 
-	public void setGeoCodeLat(long geoCodeLat) {
+	public void setGeoCodeLat(double geoCodeLat) {
 		this.geoCodeLat = geoCodeLat;
 	}
 
-	public long getGeoCodeLon() {
+	public double getGeoCodeLon() {
 		return geoCodeLon;
 	}
 
-	public void setGeoCodeLon(long geoCodeLon) {
+	public void setGeoCodeLon(double geoCodeLon) {
 		this.geoCodeLon = geoCodeLon;
 	}
 
@@ -137,10 +141,7 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
 				+ ", currentPoints=" + currentPoints + ", favCities=" + favCities + ", favActivities=" + favActivities
-				+ ", profileImage=" + profileImage + ", password=" + password + ", imageList=" + imageList + "]";
+				+ ", profileImage=" + profileImage + ", password=" + password + ", geoCodeLat=" + geoCodeLat
+				+ ", geoCodeLon=" + geoCodeLon + ", imageList=" + imageList + "]";
 	}
-
-
-
-
 }
