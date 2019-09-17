@@ -12,22 +12,36 @@
 	rel="stylesheet"
 	integrity="sha384-9NlqO4dP5KfioUGS568UFwM3lbWf3Uj3Qb7FBHuIuhLoDp3ZgAqPE1/MYLEBPZYM"
 	crossorigin="anonymous">
+	 <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+	
 </head>
 <body
 	background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
 
 	<c:forEach var="usInfo" items="${userTripInfo }">
-		<h1>${usInfo.userName }</h1><br>
-		<c:forEach var="usImg" items="${usInfo.imageList }">
-		
-		<img src="${usImg.url }">
-		</c:forEach>
-		<br>
+<div align="center">
+		<h2>${usInfo.userName } <img src="${usInfo.profileImage }" height="75px" width="75px"></h2>
+		<h6>...is from ${usInfo.homeBase } and has ${usInfo.currentPoints } TrekPoints!</h6>
+<div>
+		<h4>Visited Attractions:</h4>
 		<c:forEach var="usLoc" items="${usInfo.locVisList }">
 		
-		${usLoc.activityName }<br>
+		<a class="btn btn-primary" href="http://www.google.com/search?q=${usLoc.activityName }">${usLoc.activityName }</a>
 		</c:forEach>
+</div>		
+</div>
+<div align="center">
+		<c:forEach var="usImg" items="${usInfo.imageList }">
 		
+		<img src="${usImg.url }" height="250px" width="250px">
+		</c:forEach>
+</div>		
+		<br>
+<div align="center"> 
+		<!-- begin wwww.htmlcommentbox.com -->
+ <div style="width:500px" id="HCB_comment_box" ><a href="http://www.htmlcommentbox.com" >HTML Comment Box</a> is loading comments...</div>
+<!-- end www.htmlcommentbox.com -->
+</div>
 		
 		
 
@@ -35,6 +49,7 @@
 
 	
 
+ <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24IGoV1pwK9PPXCsIWAgI4y%2F"+"&opts=16862&num=10&ts=1568748769603");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
 
 </body>
 </html>
