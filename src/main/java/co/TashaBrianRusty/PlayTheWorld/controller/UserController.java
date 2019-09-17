@@ -20,6 +20,7 @@ import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
+import co.TashaBrianRusty.PlayTheWorld.entity.Homebase;
 import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 import co.TashaBrianRusty.PlayTheWorld.entity.UserImage;
@@ -93,10 +94,12 @@ public class UserController {
 		String address = person.getHomeBase();
 		String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + googleKey;
 		HttpEntity<String> request = new HttpEntity<>("Parameters", headers);
-		ResponseEntity<String> response = rt.exchange(url, HttpMethod.GET, request, String.class);
-
+		ResponseEntity<Homebase> response = rt.exchange(url, HttpMethod.GET, request, Homebase.class);
+		person.setGeoCodeLat(response.getBody().getResults().get(0).getGeometry().getLocation().getLat());
+		person.setGeoCodeLon(response.getBody().getResults().get(0).getGeometry().getLocation().getLng());
 		
 		userRepo.save(person);
+		System.out.println(person.toString());
 		return new ModelAndView("person-confirm", "personinfo", person);
 	}
 }
