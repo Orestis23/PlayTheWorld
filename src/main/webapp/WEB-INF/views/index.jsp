@@ -12,6 +12,10 @@
 <link href="styles.css" rel="stylesheet">
 <head>
 
+<div align="right">
+<a class="btn btn-warning" href="/">Logout</a>
+</div>
+
 <meta charset="UTF-8">
 <title>${userInfo.userName }'s Travels!</title>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js"
@@ -23,7 +27,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
-
+				
+				
+				
 				<h1>Welcome ${userInfo.userName }!</h1>
 				<form action="main-search">
 					<!-- 		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> -->
@@ -39,36 +45,44 @@
 				</form>
 
 
-
 				<h3>Your Information</h3>
+
+
+				<h3>Your Dashboard</h3>
 				<p>${userInfo.userName }</p>
+				<p><img src="${userInfo.profileImage }">
 				<p>${userInfo.eMail }</p>
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
-				
+		
 				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
 						
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
-						<td>${locv.activityName }<br></td> 
+						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td> <br>
+					
 					</tr>
 				</c:forEach>
+					
 				
 				
-				<p>${userInfo.favCities }</p>
+			<%-- 	<p>${userInfo.favCities }</p> --%>
 				<!-- Add a loop around this for mult. locations -->
+				
+				
 				<h3>Favorite Activities</h3>
 				<p>${userInfo.favActivities }</p>
 
-
+				
 				<c:forEach var="att" items="${list }" varStatus="i">
 					<tr>
 
 				
 						<a class="btn btn-warning" href="delFavAtt?idDelete=${att.id }">Remove</a>
-						<td>${att.activityName }<br></td>
-
+						<td><a href="http://www.google.com/search?q=${att.activityName }">${att.activityName }</a><br></td> <br>
+					
+						
 					</tr>
 				</c:forEach>
 
@@ -103,8 +117,8 @@
 			 	
 			 myWidget.open();
 			 }
- </script>
 
+ </script>
 
 </body>
 </html>

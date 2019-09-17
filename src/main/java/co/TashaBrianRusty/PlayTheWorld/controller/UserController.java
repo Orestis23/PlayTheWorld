@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,9 +77,9 @@ public class UserController {
 	@PostMapping("submit-person")
 	public ModelAndView submitForm(User person) {
 //		System.out.println(person.getPassword());
-		 String hashpw1 = BCrypt.hashpw(person.getPassword(), BCrypt.gensalt());
+//		 String hashpw1 = BCrypt.hashpw(person.getPassword(), BCrypt.gensalt());
 //		System.out.println(hashpw);
-		 person.setPassword(hashpw1);
+//		 person.setPassword(hashpw1);
 		userRepo.save(person);
 		return new ModelAndView("person-confirm", "personinfo", person);
 	}
