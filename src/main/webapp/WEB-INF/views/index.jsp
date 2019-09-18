@@ -11,6 +11,9 @@
 
 <link href="styles.css" rel="stylesheet">
 <head>
+<div align="center">
+<a class="btn btn-warning" href="tripData">See Other TrekStars' Memories</a>
+</div>
 
 <div align="right">
 	<a class="btn btn-warning" href="/">Logout</a>
@@ -43,11 +46,7 @@
 						<option value="San Francisco">San Francisco</option>
 					</select> <input class="btn btn-warning" type="submit" value="Search">
 				</form>
-
-
-				<h3>Your Information</h3>
-
-
+				
 				<h3>Your Dashboard</h3>
 				<p>${userInfo.userName }</p>
 				<p>

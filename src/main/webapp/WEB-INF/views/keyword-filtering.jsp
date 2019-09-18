@@ -10,8 +10,9 @@
 <meta charset="ISO-8859-1">
 <title>Search Results</title>
 </head>
-<body>
-	<div class="container">
+<body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
+<div class="container">
+<a class="btn btn-warning" href="login?eMail=${user.eMail }">Go Back</a>
 	${keyword }
 		<h1>Points of Interest</h1>
 		<table class="table">
