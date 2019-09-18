@@ -45,6 +45,7 @@
                     </tr>
                     </c:forEach>
 
+
  			<c:forEach var="c" items="${locations }" begin="0" end="0">
 				<tr>
 					<td><c:url value="/city-detail" var="url">
@@ -56,8 +57,8 @@
 					<td>${distance }</td>
 				</tr>
  			</c:forEach> 
-		
-			
+
+
 		</table>
 		<br>
 		<h1>Points of Interest</h1>

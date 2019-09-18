@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 @Controller
@@ -34,6 +35,9 @@ public class RewardController {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	UserRepo userRepo;
 
 	@RequestMapping("catalogs")
 	public ModelAndView catalogs() {
@@ -85,6 +89,10 @@ public class RewardController {
 		System.out.println(request.toString());
 		ResponseEntity<String> response = rt.exchange(url, HttpMethod.POST, request, String.class);
 		System.out.println(response.getBody());
+
+		user.setCurrentPoints(user.getCurrentPoints() - points);
+		userRepo.save(user);
+		
 		return mv;
 	}
 }

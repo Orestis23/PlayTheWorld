@@ -24,7 +24,11 @@ public class User {
 	private String userName;
 	private String eMail;
 	private String homeBase;
+<<<<<<< HEAD
 	private Integer currentPoints;
+=======
+	private int currentPoints;
+>>>>>>> b643a82ca0c13c4a3e3bf84b71bd281d6e477c9c
 	private String favCities;
 	private String favActivities;
 	private String profileImage;
@@ -39,7 +43,7 @@ public class User {
 
 	@OneToMany(mappedBy = "user")
 	private List<LocVisited> locVisList;
-	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -125,14 +129,22 @@ public class User {
 		this.homeBase = homeBase;
 	}
 
+<<<<<<< HEAD
 	public Integer getCurrentPoints() {
 		return currentPoints;
 	}
 
 	public void setCurrentPoints(Integer currentPoints) {
+=======
+	public int getCurrentPoints() {
+		return currentPoints;
+	}
+
+	public void setCurrentPoints(int currentPoints) {
+>>>>>>> b643a82ca0c13c4a3e3bf84b71bd281d6e477c9c
 		this.currentPoints = currentPoints;
 	}
-	
+
 	public String getFavCities() {
 		return favCities;
 	}
