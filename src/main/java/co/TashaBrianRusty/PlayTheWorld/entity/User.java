@@ -24,11 +24,7 @@ public class User {
 	private String userName;
 	private String eMail;
 	private String homeBase;
-<<<<<<< HEAD
 	private Integer currentPoints;
-=======
-	private int currentPoints;
->>>>>>> b643a82ca0c13c4a3e3bf84b71bd281d6e477c9c
 	private String favCities;
 	private String favActivities;
 	private String profileImage;
@@ -47,54 +43,6 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-
-	public List<LocVisited> getLocVisList() {
-		return locVisList;
-	}
-
-	public void setLocVisList(List<LocVisited> locVisList) {
-		this.locVisList = locVisList;
-	}
-
-	public double getGeoCodeLat() {
-		return geoCodeLat;
-	}
-
-	public void setGeoCodeLat(double geoCodeLat) {
-		this.geoCodeLat = geoCodeLat;
-	}
-
-	public double getGeoCodeLon() {
-		return geoCodeLon;
-	}
-
-	public void setGeoCodeLon(double geoCodeLon) {
-		this.geoCodeLon = geoCodeLon;
-	}
-
-	public List<UserImage> getImageList() {
-		return imageList;
-	}
-
-	public void setImageList(List<UserImage> imageList) {
-		this.imageList = imageList;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getProfileImage() {
-		return profileImage;
-	}
-
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
 	}
 
 	public Integer getId() {
@@ -129,19 +77,11 @@ public class User {
 		this.homeBase = homeBase;
 	}
 
-<<<<<<< HEAD
 	public Integer getCurrentPoints() {
 		return currentPoints;
 	}
 
 	public void setCurrentPoints(Integer currentPoints) {
-=======
-	public int getCurrentPoints() {
-		return currentPoints;
-	}
-
-	public void setCurrentPoints(int currentPoints) {
->>>>>>> b643a82ca0c13c4a3e3bf84b71bd281d6e477c9c
 		this.currentPoints = currentPoints;
 	}
 
@@ -161,11 +101,62 @@ public class User {
 		this.favActivities = favActivities;
 	}
 
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public double getGeoCodeLat() {
+		return geoCodeLat;
+	}
+
+	public void setGeoCodeLat(double geoCodeLat) {
+		this.geoCodeLat = geoCodeLat;
+	}
+
+	public double getGeoCodeLon() {
+		return geoCodeLon;
+	}
+
+	public void setGeoCodeLon(double geoCodeLon) {
+		this.geoCodeLon = geoCodeLon;
+	}
+
+	public List<UserImage> getImageList() {
+		return imageList;
+	}
+
+	public void setImageList(List<UserImage> imageList) {
+		this.imageList = imageList;
+	}
+
+	public List<LocVisited> getLocVisList() {
+		return locVisList;
+	}
+
+	public void setLocVisList(List<LocVisited> locVisList) {
+		this.locVisList = locVisList;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", eMail=" + eMail + ", homeBase=" + homeBase
 				+ ", currentPoints=" + currentPoints + ", favCities=" + favCities + ", favActivities=" + favActivities
 				+ ", profileImage=" + profileImage + ", password=" + password + ", geoCodeLat=" + geoCodeLat
-				+ ", geoCodeLon=" + geoCodeLon + ", imageList=" + imageList + "]";
+				+ ", geoCodeLon=" + geoCodeLon + ", imageList=" + imageList + ", locVisList=" + locVisList + "]";
 	}
+
+
+
 }
