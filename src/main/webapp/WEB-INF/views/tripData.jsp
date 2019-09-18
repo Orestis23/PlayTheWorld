@@ -26,6 +26,7 @@
 <a class="btn btn-primary" href="login?eMail=${user.eMail }">Go Back</a>
 
 	<c:forEach var="usInfo" items="${userTripInfo }">
+<c:if test="${not empty usInfo.imageList }">
 <div align="center">
 		<h2 style= "font-family:georgia">${usInfo.userName } <img src="${usInfo.profileImage }" height="75px" width="75px"></h2> <h6 style= "font-family:georgia">...is from ${usInfo.homeBase } and has ${usInfo.currentPoints } TrekPoints!</h6>
 		
@@ -37,19 +38,22 @@
 		</c:forEach>
 </div>		
 </div>
+
+
 <div align="center">
 		<c:forEach var="usImg" items="${usInfo.imageList }">
 		
 		<img src="${usImg.url }" height="250px" width="250px">
 		</c:forEach>
-</div>		
+</div>	
+
 		<br>
 <div align="center"> 
 		<!-- begin wwww.htmlcommentbox.com -->
  <div style="width:500px" id="HCB_comment_box" ><a href="http://www.htmlcommentbox.com" >HTML Comment Box</a> is loading comments...</div>
 <!-- end www.htmlcommentbox.com -->
 </div>
-
+</c:if>	
 	</c:forEach>	
 	<!--  <div style="width:500px" id="HCB_comment_box" ><a href="http://www.htmlcommentbox.com" >HTML Comment Box</a> is loading comments...</div>
  -->
