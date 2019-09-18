@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
 
 @Controller
 public class RewardController {
 
-	@Value("${tango.key}")
+	@Value("${tango.auth}")
 	String tangoKey;
 	
 	@Value("${tango.credit}")
@@ -57,7 +60,7 @@ public class RewardController {
 	
 	@RequestMapping(value = "redeem-points", produces = "application/json", method = RequestMethod.POST)
 	public ModelAndView redeemPoints(@RequestParam("points") int points, @RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName, @RequestParam("eMail") String eMail) {
+			@RequestParam("lastName") String lastName, @RequestParam("eMail") String eMail) throws JsonProcessingException {
 		ModelAndView mv = new ModelAndView("redeem-confirm");
 //		int redeemValue = (points / 100);
 		String redeemValue = Integer.toString(points / 100);
@@ -72,8 +75,13 @@ public class RewardController {
 		map.add("amount", redeemValue);
 		map.add("creditCardToken", tangoCredit);
 		map.add("customerIdentifier", "TrekStar");
+		
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonMap = mapper.writeValueAsString(map).replace("[", "").replace("]", "");
+        
 		String url = "https://integration-api.tangocard.com/raas/v2/creditCardDeposits";
-		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(headers, map);
+//		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(headers, jsonMap);
+		HttpEntity<String> request = new HttpEntity<String>(jsonMap, headers);
 		System.out.println(request.toString());
 		ResponseEntity<String> response = rt.exchange(url, HttpMethod.POST, request, String.class);
 		System.out.println(response.getBody());
