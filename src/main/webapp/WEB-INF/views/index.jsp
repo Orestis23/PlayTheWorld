@@ -33,7 +33,7 @@
 
 
 
-				<h1>Welcome ${userInfo.userName }!</h1>
+				<h1><p style= "font-family:georgia">Welcome ${userInfo.userName }!</p></h1>
 				<form action="main-search">
 					<!-- 		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> -->
 					<select name="msearch">
@@ -47,44 +47,34 @@
 					</select> <input class="btn btn-warning" type="submit" value="Search">
 				</form>
 				
-				<h3>Your Dashboard</h3>
-
-				<p>${userInfo.userName }</p>
-				<p>
-					<img src="${userInfo.profileImage }" height="110px" width="110px">
-				<p>${userInfo.eMail }</p>
-				<p>Points Accumulated: ${userInfo.currentPoints }</p>
-				<p>Your Home Location: ${userInfo.homeBase }</p>
+				<h3><p style= "font-family:georgia">Your Dashboard</p></h3>
 
 				<p style= "font-family:georgia">${userInfo.userName }</p>
+			
+
+
+
 				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p style= "font-family:georgia">${userInfo.eMail }</p>
 				<p style= "font-family:georgia">Points Accumulated: ${userInfo.currentPoints }</p>
 				<p style= "font-family:georgia">Your Home Location: ${userInfo.homeBase }</p>
 
-				<h3>Locations Visited</h3>
+				<h3><p style= "font-family:georgia">Locations Visited</p></h3>
 
 				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
 
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
-						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td>
+						<a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br>
 						<br>
 
 					</tr>
 				</c:forEach>
 
-				<%-- 	<p>${userInfo.favCities }</p> --%>
-				<!-- Add a loop around this for mult. locations -->
-
-
-
-				<h3>Favorite Activities</h3>
-				<p>${userInfo.favActivities }</p>
 
 				
 				
-				<p style= "font-family:georgia"><h3>Favorite Activities</h3></p>
+				<h3><p style= "font-family:georgia">Favorite Activities</p></h3>
 				<p style= "font-family:georgia">${userInfo.favActivities }</p>
 
 

@@ -78,4 +78,6 @@ public class FavoritesController {
 		
 		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
 	}
+	
+	
 }
