@@ -78,4 +78,18 @@ public class FavoritesController {
 		
 		return new ModelAndView("redirect:/login?eMail=" + user.geteMail());
 	}
+	@RequestMapping("/addCityVisted")
+	public ModelAndView addCity(String cityVisited, boolean isChecked) {
+		User user = (User) session.getAttribute("user");
+		LocVisited visited = new LocVisited(user.getUserName(), cityVisited);
+		visited.setUser(user);
+		if (isChecked == true) {
+			locVisRepo.save(visited);
+		}
+		else {
+			locVisRepo.delete(visited);
+	}
+		ModelAndView mv = new ModelAndView("forward:/main-search");
+		return mv;
+	}
 }

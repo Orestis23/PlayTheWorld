@@ -56,8 +56,7 @@
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
 
-				<c:forEach var="locv" items="${locList }" varStatus="i">
-					<tr>
+				<c:forEach var="locv" items="${locList }" varStatus="i"><tr>
 
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
 						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td>
@@ -74,13 +73,11 @@
 				<p>${userInfo.favActivities }</p>
 
 
-				<c:forEach var="att" items="${list }" varStatus="i">
-					<tr>
+				<c:forEach var="att" items="${list }" varStatus="i"><tr>
 
 
 						<a class="btn btn-warning" href="delFavAtt?idDelete=${att.id }">Remove</a>
-						<td><a
-							href="http://www.google.com/search?q=${att.activityName }">${att.activityName }</a><br></td>
+						<td><a href="http://www.google.com/search?q=${att.activityName }">${att.activityName }</a><br></td>
 						<br>
 
 

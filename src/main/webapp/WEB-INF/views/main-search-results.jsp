@@ -8,7 +8,7 @@
 	rel="stylesheet">
 <head>
 <meta charset="ISO-8859-1">
-<title>Search Results</title>
+<title>City Search</title>
 
 </head>
 <body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
@@ -27,6 +27,8 @@
 				<th>City Code</th>
 				<th>Travel Score</th>
 				<th>Points for Visiting</th>
+				<th></th>
+				
 			</tr>
 
 		<c:forEach var="c" items="${locations }" begin="0" end="0">
@@ -38,6 +40,8 @@
                     <td>${c.iataCode }</td>
                     <td>${c.analytics.travelers.score }</td>
                     <td>${distance }</td>
+                    <td><button class="btn btn-warning" type="button" onclick="addPoints(${distance })">Click if visited!</button></td>
+                    
                     </tr>
                     </c:forEach>
 
@@ -52,7 +56,8 @@
 					<td>${distance }</td>
 				</tr>
  			</c:forEach> 
-
+		
+			
 		</table>
 		<br>
 		<h1>Points of Interest</h1>
@@ -113,6 +118,18 @@
 			</ul>
 		</div>
 	</div>
-
+<script>
+function addPoints(distance){
+	 var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     // document.getElementById("demo").innerHTML =
+	      this.responseText;
+	    }
+	  };
+	  xhttp.open("GET", "add-points?points=" +distance, true);
+	  xhttp.send();
+}
+</script>
 </body>
 </html>

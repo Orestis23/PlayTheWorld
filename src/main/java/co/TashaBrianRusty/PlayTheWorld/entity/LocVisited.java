@@ -18,6 +18,7 @@ public class LocVisited {
 	private Integer id;
 	private String userName;
 	private String activityName;
+	private String cityVisited;
 
 	@ManyToOne
 
@@ -67,9 +68,20 @@ public class LocVisited {
 		this.activityName = activityName;
 	}
 
+	public String getCityVisited() {
+		return cityVisited;
+	}
+
+	public void setCityVisited(String cityVisited) {
+		this.cityVisited = cityVisited;
+	}
+
 	@Override
 	public String toString() {
-		return "LocVisited [id=" + id + ", userName=" + userName + ", activityName=" + activityName + "]";
+		return "LocVisited [id=" + id + ", userName=" + userName + ", activityName=" + activityName + ", cityVisited="
+				+ cityVisited + ", user=" + user + "]";
 	}
+
+	
 
 }

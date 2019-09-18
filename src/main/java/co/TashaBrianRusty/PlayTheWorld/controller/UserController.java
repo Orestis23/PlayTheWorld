@@ -112,4 +112,17 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("tripData", "userTripInfo", users);
 		return mv;
 	}
+	
+	//identify the user, get current points & add new points to account
+	@RequestMapping("add-points")
+	public void addPoints(Integer points) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			User user1 = userRepo.findByeMail(user.geteMail());
+			user1.setCurrentPoints(user1.getCurrentPoints()+ points);
+			userRepo.save(user1);
+			
+		}
+		
+	}
 }

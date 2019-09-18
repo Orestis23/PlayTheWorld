@@ -33,4 +33,6 @@ public class CountryController {
 		ctRepo.deleteById(id);
 		return new ModelAndView("redirect:/");
 	}
+	
+	
 }

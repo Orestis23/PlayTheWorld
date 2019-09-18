@@ -24,7 +24,7 @@ public class User {
 	private String userName;
 	private String eMail;
 	private String homeBase;
-	private String currentPoints;
+	private Integer currentPoints;
 	private String favCities;
 	private String favActivities;
 	private String profileImage;
@@ -125,11 +125,11 @@ public class User {
 		this.homeBase = homeBase;
 	}
 
-	public String getCurrentPoints() {
+	public Integer getCurrentPoints() {
 		return currentPoints;
 	}
 
-	public void setCurrentPoints(String currentPoints) {
+	public void setCurrentPoints(Integer currentPoints) {
 		this.currentPoints = currentPoints;
 	}
 	
