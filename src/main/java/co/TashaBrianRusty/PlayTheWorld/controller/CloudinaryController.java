@@ -50,9 +50,6 @@ public class CloudinaryController {
 		img.setUser(u);
 		imgRepo.save(img);
 		
-		System.out.println(u);
-		System.out.println(url);
-		
 		
 		return new ModelAndView("redirect:/login?eMail=" + u.geteMail());
 	}
