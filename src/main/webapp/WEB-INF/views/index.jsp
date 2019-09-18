@@ -49,7 +49,7 @@
 				
 				<h3><p style= "font-family:georgia">Your Dashboard</p></h3>
 
-				<p style= "font-family:georgia">${userInfo.userName }</p>
+				<h2><p style= "font-family:georgia">${userInfo.userName }</p></h2>
 			
 
 
@@ -57,6 +57,7 @@
 				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p style= "font-family:georgia">${userInfo.eMail }</p>
 				<p style= "font-family:georgia">Points Accumulated: ${userInfo.currentPoints }</p>
+				<p><a class="btn btn-warning" href="redeem">Redeem Your Points</a></p><br>
 				<p style= "font-family:georgia">Your Home Location: ${userInfo.homeBase }</p>
 
 				<h3><p style= "font-family:georgia">Locations Visited</p></h3>

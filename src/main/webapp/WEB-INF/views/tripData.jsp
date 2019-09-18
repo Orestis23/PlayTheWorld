@@ -27,10 +27,10 @@
 
 	<c:forEach var="usInfo" items="${userTripInfo }">
 <div align="center">
-		<h2><p style= "font-family:georgia">${usInfo.userName } <img src="${usInfo.profileImage }" height="75px" width="75px"></p></h2> <h6><p style= "font-family:georgia">...is from ${usInfo.homeBase } and has ${usInfo.currentPoints } TrekPoints!</p></h6>
+		<h2 style= "font-family:georgia">${usInfo.userName } <img src="${usInfo.profileImage }" height="75px" width="75px"></h2> <h6 style= "font-family:georgia">...is from ${usInfo.homeBase } and has ${usInfo.currentPoints } TrekPoints!</h6>
 		
 <div>
-		<h4><p style= "font-family:georgia">Visited Attractions:</p></h4>
+		<h4 style= "font-family:georgia">Visited Attractions:</h4>
 		<c:forEach var="usLoc" items="${usInfo.locVisList }">
 		
 		<a class="btn btn-primary" href="http://www.google.com/search?q=${usLoc.activityName }">${usLoc.activityName }</a>
@@ -51,7 +51,8 @@
 </div>
 
 	</c:forEach>	
-
+	<!--  <div style="width:500px" id="HCB_comment_box" ><a href="http://www.htmlcommentbox.com" >HTML Comment Box</a> is loading comments...</div>
+ -->
  <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="https://www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24IGoV1pwK9PPXCsIWAgI4y%2F"+"&opts=16862&num=10&ts=1568748769603");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
 
 </body>
