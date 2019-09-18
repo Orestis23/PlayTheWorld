@@ -72,7 +72,7 @@ public class RewardController {
 		ModelAndView mv = new ModelAndView("redeem-confirm");
 		String redeemValue = Integer.toString(points / 100);
 		User user = (User) session.getAttribute("user");
-		System.out.println(user.toString());
+//		System.out.println(user.toString());
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
