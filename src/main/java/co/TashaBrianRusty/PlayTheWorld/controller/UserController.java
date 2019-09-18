@@ -20,7 +20,6 @@ import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserImageRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
-import co.TashaBrianRusty.PlayTheWorld.entity.Attraction;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
 import co.TashaBrianRusty.PlayTheWorld.entity.Homebase;
 import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
