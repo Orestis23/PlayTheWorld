@@ -20,7 +20,7 @@
 </div>
 
 <meta charset="UTF-8">
-<title>${userInfo.userName }'sTravels!</title>
+<title>${userInfo.userName }'s Travels!</title>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js"
 	type="text/javascript">  </script>
 
@@ -48,12 +48,20 @@
 				</form>
 				
 				<h3>Your Dashboard</h3>
+
 				<p>${userInfo.userName }</p>
 				<p>
 					<img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p>${userInfo.eMail }</p>
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
+
+				<p style= "font-family:georgia">${userInfo.userName }</p>
+				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
+				<p style= "font-family:georgia">${userInfo.eMail }</p>
+				<p style= "font-family:georgia">Points Accumulated: ${userInfo.currentPoints }</p>
+				<p style= "font-family:georgia">Your Home Location: ${userInfo.homeBase }</p>
+
 				<h3>Locations Visited</h3>
 
 				<c:forEach var="locv" items="${locList }" varStatus="i">
@@ -70,8 +78,15 @@
 				<!-- Add a loop around this for mult. locations -->
 
 
+
 				<h3>Favorite Activities</h3>
 				<p>${userInfo.favActivities }</p>
+
+				
+				
+				<p style= "font-family:georgia"><h3>Favorite Activities</h3></p>
+				<p style= "font-family:georgia">${userInfo.favActivities }</p>
+
 
 
 				<c:forEach var="att" items="${list }" varStatus="i">
