@@ -34,5 +34,11 @@ public class CountryController {
 		return new ModelAndView("redirect:/");
 	}
 	
+	@RequestMapping("/test")
+	public ModelAndView antonellaTest() {
+		
+		return new ModelAndView("antonellatest");
+	}
+	
 	
 }

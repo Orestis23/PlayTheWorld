@@ -12,7 +12,7 @@
 <body>
 <body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
 <div class="container">
-<a class="btn btn-warning" href="login?eMail=${user.eMail }">Go Back</a>
+<a class="btn btn-primary" href="login?eMail=${user.eMail }">Go Back</a>
 <h1>Redeem Points</h1>
 
 <form action="redeem-points" method="POST">

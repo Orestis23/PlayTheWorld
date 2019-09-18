@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Confirmation Page</title>
+<title>Thank you for registering!</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/spacelab/bootstrap.min.css"
 	rel="stylesheet">
@@ -13,12 +13,15 @@
 </head>
 <body>
 
+<div align="center">
+<h1><p style= "font-family:georgia">Thank You for Registering!</p></h1>
 
-<h1>Thank You for Registering!</h1>
 
+<h3><p style= "font-family:georgia">${personinfo.userName}</p></h3>
+</div>
 
-<h3>${personinfo.userName}</h3>
-
-<a href="/">Go Back To Login</a>
+<div align="center">
+<a class="btn btn-primary" href="/">Go Back To Login</a>
+</div>
 </body>
 </html>
