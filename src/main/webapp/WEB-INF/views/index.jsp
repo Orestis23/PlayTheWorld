@@ -13,11 +13,11 @@
 <head>
 
 <div align="right">
-<a class="btn btn-warning" href="/">Logout</a>
+	<a class="btn btn-warning" href="/">Logout</a>
 </div>
 
 <meta charset="UTF-8">
-<title>${userInfo.userName }'s Travels!</title>
+<title>${userInfo.userName }'sTravels!</title>
 <script src="https://widget.cloudinary.com/v2.0/global/all.js"
 	type="text/javascript">  </script>
 
@@ -27,9 +27,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
-				
-				
-				
+
+
+
 				<h1>Welcome ${userInfo.userName }!</h1>
 				<form action="main-search">
 					<!-- 		<input type="text" name="msearch" placeholder="Search by City" style="width: 50%;"> -->
@@ -50,49 +50,54 @@
 
 				<h3>Your Dashboard</h3>
 				<p>${userInfo.userName }</p>
-				<p><img src="${userInfo.profileImage }" height="110px" width="110px">
+				<p>
+					<img src="${userInfo.profileImage }" height="110px" width="110px">
 				<p>${userInfo.eMail }</p>
 				<p>Points Accumulated: ${userInfo.currentPoints }</p>
 				<p>Your Home Location: ${userInfo.homeBase }</p>
 				<h3>Locations Visited</h3>
-		
+
 				<c:forEach var="locv" items="${locList }" varStatus="i">
 					<tr>
-						
+
 						<a class="btn btn-warning" href="delLocVisited?idDelete=${locv.id }">Remove</a>
-						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td> <br>
-					
+						<td><a href="http://www.google.com/search?q=${locv.activityName }">${locv.activityName }</a><br></td>
+						<br>
+
 					</tr>
 				</c:forEach>
-				
-			<%-- 	<p>${userInfo.favCities }</p> --%>
+
+				<%-- 	<p>${userInfo.favCities }</p> --%>
 				<!-- Add a loop around this for mult. locations -->
-				
-				
+
+
 				<h3>Favorite Activities</h3>
 				<p>${userInfo.favActivities }</p>
 
-				
+
 				<c:forEach var="att" items="${list }" varStatus="i">
 					<tr>
 
-				
+
 						<a class="btn btn-warning" href="delFavAtt?idDelete=${att.id }">Remove</a>
-						<td><a href="http://www.google.com/search?q=${att.activityName }">${att.activityName }</a><br></td> <br>
-					
-						
+						<td><a
+							href="http://www.google.com/search?q=${att.activityName }">${att.activityName }</a><br></td>
+						<br>
+
+
 					</tr>
 				</c:forEach>
 
 			</div>
-			 <div class="col-lg-8">
+			<div class="col-lg-8">
 				<button onclick="showUploadWidget()" id="opener"
-					class="cloudinary-button">Upload New Image</button> 
+					class="cloudinary-button">Upload New Image</button>
 				<br>
 				<c:forEach var="img" items="${imageList }">
 					<img src="${img.url}" height="250px" width="250px">
 					<a id="link" href="delImage?imageId=${img.id }">Remove</a>
-					
+
+
 				</c:forEach>
 
 			</div>

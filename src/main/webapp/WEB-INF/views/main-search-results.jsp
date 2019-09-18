@@ -16,17 +16,15 @@
 
 
 <a class="btn btn-warning" href="login?eMail=${user.eMail }">Go Back</a>
-		<br> <img src="${map }">
-
+		<div align="center" id="map">
+		<br> <img src="${map }" height="400px" width="800px">
+</div>
 		<br><br>
 		<h1>City Info</h1>
 		<table class="table">
 			<tr>
 				<th>Name</th>
-				<!-- <th>Location Type</th> -->
 				<th>City Code</th>
-				<!-- <th>Latitude</th>
-				<th>Longitude</th> -->
 				<th>Travel Score</th>
 				<th>Points for Visiting</th>
 			</tr>
@@ -36,10 +34,8 @@
                     <td><c:url value="/city-detail" var="url">
                             <c:param name="cityName" value="${c.id}" />
                         </c:url> <a href="${url}">${c.name }</a></td>
-                    <%-- <td>${c.subType }</td> --%>
+                   
                     <td>${c.iataCode }</td>
-                    <%-- <td>${c.geoCode.latitude }</td>
-                    <td>${c.geoCode.longitude }</td> --%>
                     <td>${c.analytics.travelers.score }</td>
                     <td>${distance }</td>
                     </tr>
@@ -50,10 +46,8 @@
 					<td><c:url value="/city-detail" var="url">
 							<c:param name="cityName" value="${c.id}" />
 						</c:url> <a href="${url}">${c.name }</a></td>
-					<%-- <td>${c.subType }</td> --%>
+					
 					<td>${c.iataCode }</td>
-					<%-- <td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td> --%>
 					<td>${c.analytics.travelers.score }</td>
 					<td>${distance }</td>
 				</tr>
@@ -68,8 +62,6 @@
 				<th>Name (Select to Mark as Favorite)</th>
 				<th>Select if you visited here!</th>
 				<th>Location Type</th>
-				<!-- <th>Latitude</th>
-				<th>Longitude</th> -->
 				<th>Travel Score</th>
 				<th>Keywords</th>
 			</tr>
@@ -88,8 +80,6 @@
 					checked
 					</c:if>>${c.name } </td>
 					<td>${c.category }</td>
-					<%-- <td>${c.geoCode.latitude }</td>
-					<td>${c.geoCode.longitude }</td> --%>
 					<td>${c.rank }</td>
 					<td><c:forEach var="a" items="${c.tags }">
 							<c:url value="/keyword-filter" var="url">
@@ -106,8 +96,7 @@
 		<div>
 			<ul class="pagination pagination-lg">
 				<li class="page-item disabled">
-					<%-- 					<% String link = request.getParameter("${points.last}");
-						session.setAttribute("link", link); %>  --%> <a class="page-link"
+			 <a class="page-link"
 					href="points-last">&laquo;</a>
 				</li>
 				<li class="page-item active"><a class="page-link" href="#">1</a></li>
