@@ -1,7 +1,6 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -29,7 +28,7 @@ import co.TashaBrianRusty.PlayTheWorld.entity.UserImage;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	UserImageRepo usImgRepo;
 
@@ -50,7 +49,7 @@ public class UserController {
 
 	@Value("${upload.preset}")
 	String preset;
-	
+
 	@Value("${google.key}")
 	String googleKey;
 
@@ -59,7 +58,6 @@ public class UserController {
 
 		return new ModelAndView("login");
 	}
-
 
 	@RequestMapping("register")
 	public ModelAndView personPage() {
@@ -70,7 +68,7 @@ public class UserController {
 		return mv;
 
 	}
-	
+
 	@RequestMapping("/login")
 	public ModelAndView submitLogin(String eMail) {
 		ModelAndView mv = new ModelAndView("index");
@@ -85,8 +83,8 @@ public class UserController {
 		mv.addObject("name", cloudName);
 		mv.addObject("preset", preset);
 		mv.addObject("list", favoriteAtt);
-		
 		return mv;
+
 	}
 
 	@PostMapping("submit-person")
@@ -103,16 +101,14 @@ public class UserController {
 		ResponseEntity<Homebase> response = rt.exchange(url, HttpMethod.GET, request, Homebase.class);
 		person.setGeoCodeLat(response.getBody().getResults().get(0).getGeometry().getLocation().getLat());
 		person.setGeoCodeLon(response.getBody().getResults().get(0).getGeometry().getLocation().getLng());
-		
 		userRepo.save(person);
 		System.out.println(person.toString());
 		return new ModelAndView("person-confirm", "personinfo", person);
 	}
-	
+
 	@RequestMapping("tripData")
 	public ModelAndView tripContent() {
 		List<User> users = userRepo.findAll();
-		
 		ModelAndView mv = new ModelAndView("tripData", "userTripInfo", users);
 		return mv;
 	}
