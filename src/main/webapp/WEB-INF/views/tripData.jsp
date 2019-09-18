@@ -18,8 +18,6 @@
 <body
 	background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
 
-<a class="btn btn-warning" href="login?eMail=${user.eMail }">Back To Account</a>
-
 
 <div align="right">
 	<a class="btn btn-primary" href="/">Logout</a>
