@@ -1,5 +1,8 @@
 package co.TashaBrianRusty.PlayTheWorld.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
 
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
@@ -66,9 +70,9 @@ public class RewardController {
 	public ModelAndView redeemPoints(@RequestParam("points") int points, @RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName, @RequestParam("eMail") String eMail) throws JsonProcessingException {
 		ModelAndView mv = new ModelAndView("redeem-confirm");
-//		int redeemValue = (points / 100);
 		String redeemValue = Integer.toString(points / 100);
 		User user = (User) session.getAttribute("user");
+		System.out.println(user.toString());
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
@@ -84,15 +88,57 @@ public class RewardController {
         String jsonMap = mapper.writeValueAsString(map).replace("[", "").replace("]", "");
         
 		String url = "https://integration-api.tangocard.com/raas/v2/creditCardDeposits";
-//		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(headers, jsonMap);
 		HttpEntity<String> request = new HttpEntity<String>(jsonMap, headers);
 		System.out.println(request.toString());
 		ResponseEntity<String> response = rt.exchange(url, HttpMethod.POST, request, String.class);
 		System.out.println(response.getBody());
 
+		
 		user.setCurrentPoints(user.getCurrentPoints() - points);
 		userRepo.save(user);
 		
+		JsonObject reward = new JsonObject();
+		reward.addProperty("accountIdentifier", "TrekStar");
+		reward.addProperty("amount", redeemValue);
+		reward.addProperty("customerIdentifier", "TrekStar");
+		reward.addProperty("campaign", "");
+		reward.addProperty("emailSubject", "TrekStar Rewards");
+		reward.addProperty("etid", "E636450");
+		reward.addProperty("message", "Congrats!; Here's your loot!");
+		reward.addProperty("notes", "TrekStar rewards!");
+
+		// Create Inner JSON Object 
+		JsonObject recipient = new JsonObject();
+		recipient.addProperty("email", eMail);
+		recipient.addProperty("firstName", firstName);
+		recipient.addProperty("lastName", lastName);
+
+		reward.add("recipient", recipient);
+		reward.addProperty("sendEmail", "true");
+
+		// Create Inner JSON Object 
+		JsonObject sender = new JsonObject();
+		sender.addProperty("email", "grant@grandcircus.co");
+		sender.addProperty("firstName", "Grant");
+		sender.addProperty("lastName", "Chirpus");
+
+		reward.add("sender", sender);
+		reward.addProperty("utid", "U739634");
+		System.out.println(reward);
+
+		jsonMap = mapper.writeValueAsString(reward.toString()).replace("[", "").replace("]", "").replace("\\", "")
+				.replace("\"{\"", "{\"").replace("\"}\"", "\"}");
+		url = "https://integration-api.tangocard.com/raas/v2/orders"; 
+		request = new HttpEntity<String>(jsonMap, headers);
+		System.out.println(request.toString());
+		response = rt.exchange(url, HttpMethod.POST, request, String.class);
+		System.out.println(response.getBody());
+		
+		mv.addObject("firstName", firstName);
+		mv.addObject("value", redeemValue);
+		mv.addObject("email", eMail);
+		mv.addObject("points", points);
+		mv.addObject("balance", user.getCurrentPoints());
 		return mv;
 	}
 }

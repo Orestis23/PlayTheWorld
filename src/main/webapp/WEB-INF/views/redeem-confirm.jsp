@@ -8,7 +8,20 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-
+<body background="https://discovershareinspire.com/wp-content/uploads/2013/10/Vintage-map-faded.jpg">
+<div class="container">
+<h1>Congratulations, ${firstName }!</h1>
+<br>
+<h3>You've successfully redeemed TrekPoints for cash! Check your email at ${email } for a message with your reward link!
+<br>
+Points redeemed: ${points }
+<br>
+Points remaining: ${balance }
+<br>
+Value of points redeemed: $${value }
+<br>
+<a class="btn btn-warning btn-lg" href="login?eMail=${user.eMail }">Return to Menu</a>
+</h3>
+</div>
 </body>
 </html>
