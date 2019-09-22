@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.TashaBrianRusty.PlayTheWorld.Repo.AttractionRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
+import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
 import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
 import co.TashaBrianRusty.PlayTheWorld.entity.User;
@@ -30,7 +31,8 @@ public class FavoritesController {
 	@Autowired
 	LocVisitedRepo locVisRepo;
 	
-	
+	@Autowired
+	UserRepo userRepo;
 	
 	@RequestMapping("/addFavAtt")
 	public ModelAndView addFavAtt(String attName, String msearch, boolean isChecked) {
@@ -63,10 +65,12 @@ public class FavoritesController {
 		visited.setUser(user);
 		if (isChecked == true) {
 			locVisRepo.save(visited);
+			user.setCurrentPoints(user.getCurrentPoints() + 100);
 		}
 		else {
 			locVisRepo.delete(visited);
 		}
+		userRepo.save(user);
 		ModelAndView mv = new ModelAndView("forward:/main-search");
 		return mv;
 	}

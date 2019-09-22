@@ -20,6 +20,7 @@ import co.TashaBrianRusty.PlayTheWorld.Repo.FavoritesRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.LocVisitedRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserImageRepo;
 import co.TashaBrianRusty.PlayTheWorld.Repo.UserRepo;
+import co.TashaBrianRusty.PlayTheWorld.entity.Attraction;
 import co.TashaBrianRusty.PlayTheWorld.entity.Favorites;
 import co.TashaBrianRusty.PlayTheWorld.entity.Homebase;
 import co.TashaBrianRusty.PlayTheWorld.entity.LocVisited;
@@ -101,6 +102,7 @@ public class UserController {
 		ResponseEntity<Homebase> response = rt.exchange(url, HttpMethod.GET, request, Homebase.class);
 		person.setGeoCodeLat(response.getBody().getResults().get(0).getGeometry().getLocation().getLat());
 		person.setGeoCodeLon(response.getBody().getResults().get(0).getGeometry().getLocation().getLng());
+		person.setCurrentPoints(0);
 		userRepo.save(person);
 		System.out.println(person.toString());
 		return new ModelAndView("person-confirm", "personinfo", person);

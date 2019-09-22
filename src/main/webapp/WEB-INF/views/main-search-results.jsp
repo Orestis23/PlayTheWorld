@@ -40,7 +40,7 @@
                     <td>${c.iataCode }</td>
                     <td>${c.analytics.travelers.score }</td>
                     <td>${distance }</td>
-                    <td><button id="demo" class="btn btn-warning" type="button" onclick="add-points(${distance })">Click if visited!</button></td>
+                    <td><button id="demo" class="btn btn-warning" type="button" onclick="addPoints(${distance })">Click if visited!</button></td>
                     
                     </tr>
                     </c:forEach>
